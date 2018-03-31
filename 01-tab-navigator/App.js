@@ -2,7 +2,7 @@ import React from 'react';
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 
 import { StyleSheet, Text, View } from 'react-native';
-import { StackNavigator, TabNavigator, DrawerNavigator, TabBarTop } from 'react-navigation'
+import { TabNavigator, TabBarTop } from 'react-navigation'
 
 function Home() {
 
