@@ -6,13 +6,16 @@ import { MaterialCommunityIcons } from '@expo/vector-icons'
 function Home({ navigation }) {
 
   return (
-    <View style={[styles.container, { jusdtifyContent: 'center', alignItems: 'center' }]}>
+    <View style={[styles.container, { justifyContent: 'center', alignItems: 'center' }]}>
       <Text>Home</Text>
-      <TouchableOpacity style={{ flex: 0.3, backgroundColor: '#FF0000', height:30 }}
-        onPress={() => { navigation.navigate('Dashboard') }}
-      >
-        <Text>To Dashboard</Text>
-      </TouchableOpacity>
+      <View style={{ flex: 0.3 }}>
+        <TouchableOpacity
+          style={{ backgroundColor: '#FF0000' }}
+          onPress={() => { navigation.navigate('Dashboard') }}
+        >
+          <Text>To Dashboard</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   )
 }
