@@ -7,10 +7,10 @@ class FRParentInput extends Component {
 
     super(props)
     this.inputRef = React.createRef()
-    this.handleClick = this.handleClick.bind(this)
+    this.clickHandler = this.clickHandler.bind(this)
   }
 
-  handleClick = () => {
+  clickHandler = () => {
 
     this.inputRef.current.focus()
   }
@@ -20,7 +20,7 @@ class FRParentInput extends Component {
     return (
       <React.Fragment>
         <FRInput ref={this.inputRef} />
-        <button onClick={}>Focus Input</button>
+        <button onClick={this.clickHandler}>Focus Input</button>
       </React.Fragment>
     )
 
