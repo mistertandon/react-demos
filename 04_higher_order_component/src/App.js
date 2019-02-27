@@ -23,17 +23,19 @@ class App extends Component {
 
   render() {
 
+    const name = this.state.name;
+
     return (
       <div className="App">
-        <PureComponentMimic />
-        <RegularComponent />
+        <PureComponentMimic name={name} />
+        <RegularComponent name={name} />
       </div>
     )
   }
 
   componentDidMount() {
 
-    setTimeout(() => this.updateUserName(), 2000)
+    setInterval(() => this.updateUserName(), 2000)
   }
 }
 

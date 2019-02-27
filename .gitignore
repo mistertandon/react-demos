@@ -1,4 +1,2 @@
-./**/node_modules/
-./**/.expo/
-03_context_api/node_modules/
-04_higher_order_component/node_modules/
+**/node_modules/
+**/.expo/

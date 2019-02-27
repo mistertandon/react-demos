@@ -4,6 +4,8 @@ class RegularComponent extends Component {
 
   render() {
 
+    console.log('************* render: RegularComponent *************')
+
     return (
       <React.Fragment>
         <h3>Regular Component:</h3>
