@@ -29,7 +29,9 @@ class App extends Component {
           <p>Hello from ReactChildrenB component.</p>
           <p>Mutltiple component could be passed.</p>
         </ReactChildrenCount>
-
+        {
+          /* https://github.com/reactjs/react-transition-group */
+        }
         <SlideShow>
           <img className="slideShowImage" src="https://miro.medium.com/max/1120/1*yQPzM3BaubJgWQkoL29iOw.png" />
           <img className="slideShowImage" src="https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto/gigs/108383635/original/626f1fda69305efcb5076c8af2be5393c53ecda4/develop-and-fix-reactjs-web-application.png" />
