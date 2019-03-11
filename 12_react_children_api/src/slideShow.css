@@ -1,0 +1,13 @@
+.slideShow{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 50px auto;
+}
+
+.slideShowImage{
+  flex-grow:1;
+  max-width: 425px;
+  max-height: 425px;
+  margin: 0px 8px;
+}
