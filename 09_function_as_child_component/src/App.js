@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import './App.css';
 
-import ScrollPosition from './components/ScrollPosition'
+import Parent from './components/Parent'
 
 class App extends Component {
 
@@ -10,7 +10,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <ScrollPosition />
+        <Parent />
       </div>
     );
   }
