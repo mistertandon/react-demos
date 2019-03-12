@@ -8,20 +8,28 @@ class Reservation extends React.Component {
 
     return (
 
-      <MiniFormic initialValues={
-        {
-          isGoing: true,
-          numberOfGuests: 2
+      <MiniFormic
+        initialValues={
+          {
+            isGoing: true,
+            numberOfGuests: 2
+          }
         }
-      }>
+        onSubmit={
+
+          (values) => {
+            alert(JSON.stringify(values, null, 2));
+          }
+        }
+      >
         {
           (props) => {
 
-            const { values, handleChange, handleBlur } = props;
+            const { values, touched, errors, handleChange, handleBlur, handleSubmit } = props;
 
             return (
 
-              <form>
+              <form onSubmit={handleSubmit}>
 
                 <label>
                   Is going:
@@ -46,7 +54,11 @@ class Reservation extends React.Component {
                     onBlur={handleBlur}
                   />
                 </label>
-
+                <pre>
+                  {
+                    JSON.stringify(props, null, 2)
+                  }
+                </pre>
               </form>
             )
           }

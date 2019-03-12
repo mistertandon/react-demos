@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { throws } from 'assert';
 
 class MiniFormic extends Component {
 
@@ -37,6 +38,12 @@ class MiniFormic extends Component {
     );
   }
 
+  handleSubmit = (event) => {
+
+    event.preventDefault();
+    this.props.onSubmit(this.state.values);
+  }
+
   handleBlur = (event) => {
 
     const target = event.target;
@@ -63,7 +70,8 @@ class MiniFormic extends Component {
       {
         ...this.state,
         handleChange: this.handleChange,
-        handleBlur: this.handleBlur
+        handleBlur: this.handleBlur,
+        handleSubmit: this.handleSubmit
       }
     )
   }
