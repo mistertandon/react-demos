@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function Greeting() {
 
+  const [username, setUsername] = useState('mistertandon')
+
+  function handleUsernameChange(event) {
+
+    setUsername(event.target.value);
+  }
+
   return (
+
     <section>
-      Hi from Greeting component
+      <input name="username" value={username} onChange={handleUsernameChange} />
     </section>
   )
 }
