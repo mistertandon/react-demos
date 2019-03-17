@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import withCounter from './withCounter'
+import React, { Component } from 'react';
+import withCounter from '../hoc/withCounter';
 
 class HoverAction extends Component {
 
@@ -8,9 +8,9 @@ class HoverAction extends Component {
         const { count, incrementCounter } = this.props;
 
         return (
-            <h4 onMouseOver={incrementCounter} style={{ cursor: 'pointer' }}>
+            <div onMouseOver={incrementCounter} style={{ cursor: 'pointer' }}>
                 Hover count: {count}
-            </h4>
+            </div>
         )
     }
 }

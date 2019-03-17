@@ -8,7 +8,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <ClickAction />
+        <ClickAction addend ='5' />
         <HoverAction />
       </div>
     );

@@ -26,7 +26,7 @@ const withCounter = (Wrapped) => {
 
         render() {
 
-            return <Wrapped count={this.state.count} incrementCounter={this.incrementCounter} />
+            return <Wrapped count={this.state.count} incrementCounter={this.incrementCounter} {...this.props} />
         }
     }
 
