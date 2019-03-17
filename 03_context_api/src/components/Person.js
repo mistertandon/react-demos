@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 
 import {
     UserContext
@@ -13,7 +13,22 @@ class Person extends Component {
                 <UserContext.Consumer>
 
                     {
-                        (userContext) => <div>Hi from {userContext.state.name}</div>
+                        (userContext) => {
+
+                            return (
+                                <Fragment>
+                                    <div>
+                                        Hi from {userContext.state.name}
+                                    </div>
+                                    <div>
+                                        My Age is {userContext.state.age}
+                                    </div>
+                                    <button onClick={userContext.incrAgeByOne}>
+                                        Update Age
+                                    </button>
+                                </Fragment>
+                            )
+                        }
                     }
 
                 </UserContext.Consumer>
