@@ -7,8 +7,8 @@ import {
 
 const Books = (props) => {
 
-    const { params, path, url } = props.match;
-    console.log(props);
+    const { path, url } = props.match;
+
     return (
 
         <Fragment>
@@ -26,8 +26,19 @@ const Books = (props) => {
             <Route path={`${path}/html`} render={() => <div>Reading Html</div>} />
             <Route path={`${path}/css`} render={() => <div>Reading Css</div>} />
             <Route path={`${path}/javascript`} render={() => <div>Reading Javascript</div>} />
+            <Route path={`${path}/:id`} component={SubChild} />
         </Fragment>
     )
 }
 
+const SubChild = (props) => {
+
+    const { id } = props.match.params;
+
+    return (
+        <div>
+            {`Passed ID: ${id}`}
+        </div>
+    )
+}
 export default Books;
