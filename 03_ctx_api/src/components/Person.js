@@ -1,9 +1,31 @@
 import React, { Fragment } from 'react'
+import { UserContext } from './../contexts/UserContext'
 
 const Person = () => {
+
     return (
+
         <Fragment>
-            Hellop from person
+            <UserContext.Consumer>
+                {
+                    (context) => {
+
+                        return (
+
+                            <Fragment>
+                                <p>{context.state.age}</p>
+
+                                <button onClick={() => {
+
+                                    context.incrementAgeByOne()
+                                }}>
+                                    Increment Age By One
+                                </button>
+                            </Fragment>
+                        )
+                    }
+                }
+            </UserContext.Consumer>
         </Fragment>
     )
 }
