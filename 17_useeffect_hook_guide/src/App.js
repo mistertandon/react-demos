@@ -15,6 +15,8 @@ function App() {
 
   const [isLoading, setIsLoading] = useState(false)
 
+  const [isError, setIsError] = useState(false)
+
   useEffect(
 
     () => {
@@ -23,9 +25,15 @@ function App() {
 
         setIsLoading(true)
 
-        const result = await axios(url)
+        try {
+          const result = await axios(url)
 
-        setData(result.data)
+          setData(result.data)
+          setIsError(false)
+        } catch (error) {
+          setIsError(true)
+        }
+
         setIsLoading(false)
       }
 
@@ -47,28 +55,42 @@ function App() {
         Search
       </button>
       {
-        isLoading ?
-          (
-            <div>Loading...</div>
-          )
-          :
-          (
 
-            <div>
-              {
-                data.hits.map(item => (
-                  <li key={item.created_at_i}>
-                    <a href={item.url}>
-                      {
-                        item.title
-                      }
-                    </a>
-                  </li>
-                ))
-              }
+        !isLoading &&
+        isError &&
+        (
+          <div>Error happen...</div>
+        )
 
-            </div>
-          )
+      }
+      {
+
+        isLoading &&
+        !isError &&
+        (
+          <div>Loading...</div>
+        )
+      }
+      {
+
+        !isLoading &&
+        !isError &&
+        (
+          <div>
+            {
+              data.hits.map(item => (
+                <li key={item.created_at_i}>
+                  <a href={item.url}>
+                    {
+                      item.title
+                    }
+                  </a>
+                </li>
+              ))
+            }
+
+          </div>
+        )
 
       }
 
