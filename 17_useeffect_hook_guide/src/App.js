@@ -10,7 +10,10 @@ function App() {
   })
 
   const [query, setQuery] = useState('redux')
+
   const [url, setUrl] = useState('https://hn.algolia.com/api/v1/search?query=redux')
+
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(
 
@@ -18,9 +21,12 @@ function App() {
 
       const fetchData = async () => {
 
+        setIsLoading(true)
+
         const result = await axios(url)
 
         setData(result.data)
+        setIsLoading(false)
       }
 
       fetchData()
@@ -41,16 +47,31 @@ function App() {
         Search
       </button>
       {
-        data.hits.map(item => (
-          <li key={item.created_at_i}>
-            <a href={item.url}>
+        isLoading ?
+          (
+            <div>Loading...</div>
+          )
+          :
+          (
+
+            <div>
               {
-                item.title
+                data.hits.map(item => (
+                  <li key={item.created_at_i}>
+                    <a href={item.url}>
+                      {
+                        item.title
+                      }
+                    </a>
+                  </li>
+                ))
               }
-            </a>
-          </li>
-        ))
+
+            </div>
+          )
+
       }
+
     </Fragment>
   );
 }
