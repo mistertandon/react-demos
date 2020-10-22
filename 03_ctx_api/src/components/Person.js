@@ -13,6 +13,7 @@ const Person = () => {
                         return (
 
                             <Fragment>
+                                <p>{userContext.state.name}</p>
                                 <p>{userContext.state.age}</p>
 
                                 <button onClick={() => {
