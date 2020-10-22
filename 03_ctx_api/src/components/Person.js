@@ -8,16 +8,16 @@ const Person = () => {
         <Fragment>
             <UserContext.Consumer>
                 {
-                    (context) => {
+                    (userContext) => {
 
                         return (
 
                             <Fragment>
-                                <p>{context.state.age}</p>
+                                <p>{userContext.state.age}</p>
 
                                 <button onClick={() => {
 
-                                    context.incrementAgeByOne()
+                                    userContext.incrementAgeByOne()
                                 }}>
                                     Increment Age By One
                                 </button>
