@@ -10,7 +10,7 @@ function App() {
         //<FormikForm email="enggparveshtandon@gmail.com" password="abc1234" newsletter={true} />
       }
 
-      <FormikForm email="enggparveshtandon@gmail.com" />
+      <FormikForm email="enggparveshtandon@gmail.com" password="abc123"/>
     </div>
   );
 }

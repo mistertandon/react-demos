@@ -16,18 +16,34 @@ class FormikForm extends Component {
         return (
             <div>
                 <Form>
-                    {
-                        touched.email &&
-                        errors.email &&
-                        (
-                            <div>
-                                {
-                                    errors.email
-                                }
-                            </div>
-                        )
-                    }
-                    <Field type="email" name="email" placeholder="Enter email" />
+                    <div>
+                        {
+                            touched.email &&
+                            errors.email &&
+                            (
+                                <div>
+                                    {
+                                        errors.email
+                                    }
+                                </div>
+                            )
+                        }
+                        <Field type="email" name="email" placeholder="Enter email" />
+                    </div>
+                    <div>
+                        {
+                            touched.password &&
+                            errors.password &&
+                            (
+                                <div>
+                                    {
+                                        errors.password
+                                    }
+                                </div>
+                            )
+                        }
+                        <Field type="text" name="password" placeholder="Enter password" />
+                    </div>
                 </Form>
             </div>
         )
@@ -36,16 +52,18 @@ class FormikForm extends Component {
 }
 export default withFormik(
     {
-        mapPropsToValues({ email }) {
+        mapPropsToValues({ email, password }) {
 
             return {
 
-                email: email || ''
+                email: email || '',
+                password: password || ''
             }
         },
         validationSchema: Yup.object().shape(
             {
-                email: Yup.string().email('Invalid email').required('Email is mandatory')
+                email: Yup.string().email('Invalid email').required('Email is mandatory'),
+                password: Yup.string().min(4, "Password must be 4 characters long").max(6, "Password must be less then 6 characters").required()
             }
         )
     }
