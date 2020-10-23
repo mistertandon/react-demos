@@ -63,6 +63,12 @@ class FormikForm extends Component {
                         </Field>
                     </div>
                     <div>
+                        <label>
+                            Join our newsletter
+                            <Field type="checkbox" name="newsletter" checked={values.newsletter} />
+                        </label>
+                    </div>
+                    <div>
                         <button disabled={isSubmitting}>Submit</button>
                     </div>
                 </Form>
@@ -73,13 +79,14 @@ class FormikForm extends Component {
 }
 export default withFormik(
     {
-        mapPropsToValues({ email, password, plan }) {
+        mapPropsToValues({ email, password, plan, newsletter }) {
 
             return {
 
                 email: email || '',
                 password: password || '',
-                plan: plan || ""
+                plan: plan || "",
+                newsletter: (newsletter && typeof newsletter == 'boolean') ? newsletter : false
             }
         },
         validationSchema: Yup.object().shape(
