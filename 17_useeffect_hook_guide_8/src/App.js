@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import User from './components/User'
 
@@ -14,5 +14,3 @@ function App() {
 }
 
 export default App;
-
-// 
