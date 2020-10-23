@@ -11,15 +11,42 @@ class FormikForm extends Component {
 
     render() {
 
-        const { email } = this.props
+        const { values, touched, errors, isSubmitting } = this.props
 
         return (
-            <Fragment>
-                Hello from FormikForm component
-            </Fragment>
+            <div>
+                <Form>
+                    {
+                        touched.email &&
+                        errors.email &&
+                        (
+                            <div>
+                                {
+                                    errors.email
+                                }
+                            </div>
+                        )
+                    }
+                    <Field type="email" name="email" placeholder="Enter email" />
+                </Form>
+            </div>
         )
     }
 
 }
+export default withFormik(
+    {
+        mapPropsToValues({ email }) {
 
-export default FormikForm
+            return {
+
+                email: email || ''
+            }
+        },
+        validationSchema: Yup.object().shape(
+            {
+                email: Yup.string().email('Invalid email').required('Email is mandatory')
+            }
+        )
+    }
+)(FormikForm)
