@@ -44,6 +44,24 @@ class FormikForm extends Component {
                         }
                         <Field type="text" name="password" placeholder="Enter password" />
                     </div>
+                    <div>
+                        {
+                            touched.plan &&
+                            errors.plan &&
+                            (
+                                <div>
+                                    {
+                                        errors.plan
+                                    }
+                                </div>
+                            )
+                        }
+                        <Field component="select" name="plan" >
+                            <option value="">Select Plan</option>
+                            <option value="free">Free</option>
+                            <option value="premium">Premium</option>
+                        </Field>
+                    </div>
                 </Form>
             </div>
         )
@@ -52,18 +70,20 @@ class FormikForm extends Component {
 }
 export default withFormik(
     {
-        mapPropsToValues({ email, password }) {
+        mapPropsToValues({ email, password, plan }) {
 
             return {
 
                 email: email || '',
-                password: password || ''
+                password: password || '',
+                plan: plan || ""
             }
         },
         validationSchema: Yup.object().shape(
             {
                 email: Yup.string().email('Invalid email').required('Email is mandatory'),
-                password: Yup.string().min(4, "Password must be 4 characters long").max(6, "Password must be less then 6 characters").required()
+                password: Yup.string().min(4, "Password must be 4 characters long").max(6, "Password must be less then 6 characters").required("Password is mandatory"),
+                plan: Yup.string().required("Choose Plan")
             }
         )
     }
