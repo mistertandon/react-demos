@@ -24,6 +24,10 @@ const store = createStore(
   )
 )
 
+// Awesome trick to access store from console.log
+// window.store = store; 
+// Just got to the console and write down store.getState()
+
 ReactDOM.render(
 
   <React.StrictMode>
