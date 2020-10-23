@@ -62,6 +62,9 @@ class FormikForm extends Component {
                             <option value="premium">Premium</option>
                         </Field>
                     </div>
+                    <div>
+                        <button disabled={isSubmitting}>Submit</button>
+                    </div>
                 </Form>
             </div>
         )
@@ -85,6 +88,36 @@ export default withFormik(
                 password: Yup.string().min(4, "Password must be 4 characters long").max(6, "Password must be less then 6 characters").required("Password is mandatory"),
                 plan: Yup.string().required("Choose Plan")
             }
-        )
+        ),
+        handleSubmit(values, { resetForm, setErrors, setSubmitting }) {
+
+            setTimeout(
+                () => {
+                    setErrors({
+                        email: 'Email already exists'
+                    })
+
+                    setSubmitting(false)
+                },
+                3000
+            );
+        }
     }
 )(FormikForm)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
