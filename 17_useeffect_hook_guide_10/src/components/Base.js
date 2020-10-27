@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 import OnHover from './OnHover';
 import OnClick from './OnClick'
