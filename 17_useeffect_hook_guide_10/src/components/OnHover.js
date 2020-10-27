@@ -1,12 +1,16 @@
 import React, { Fragment } from 'react';
+import withCounter from './../hocs/withCounter'
 
 const OnHover = (props) => {
 
+    const { hoCState: { count }, incrementCounter } = props;
+
     return (
-        <Fragment>
-            Hello from OnHover
-        </Fragment>
+        <div onMouseOver={incrementCounter}>
+            OnHover Component: Counter: {count}
+        </div>
+
     )
 
 }
-export default OnHover;
+export default withCounter(OnHover);

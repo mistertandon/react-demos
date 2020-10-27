@@ -8,12 +8,9 @@ const Base = () => {
     return (
         <div className="base">
 
-            <div>
-                <OnHover class="on_hover_cmp" />
-            </div>
-            <div>
-                <OnClick class="on_click_cmp" />
-            </div>
+
+            <OnHover class="on_hover_cmp" />
+            <OnClick class="on_click_cmp" />
 
 
         </div>

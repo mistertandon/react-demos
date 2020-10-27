@@ -1,11 +1,27 @@
-import React, { Fragment } from 'react'
+import React from 'react'
+import withCounter from './../hocs/withCounter'
 
 const OnClick = (props) => {
 
+    const { hoCState: { count }, incrementCounter } = props;
+
     return (
-        <Fragment>
-            Hello from OnClick component
-        </Fragment>
+        <div >
+            <p>
+                OnClick Component
+            </p>
+
+            <button onClick={incrementCounter}>
+                Click me
+            </button>
+            
+            <span>
+                Counter: {count}
+            </span>
+
+        </div>
+
+
     )
 }
-export default OnClick;
+export default withCounter(OnClick);
