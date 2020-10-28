@@ -13,8 +13,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
      - super(props)
      - Directly overwrite this.state
 - static getDerivedStateFromProps(props, state)
-  - When the state of the component depends on changes in props over time
-  - As it's static method therefore it does not have access to `this` context and we can not make use of `this.setState`, we need to simply return an `Object` that represent the new state.
+  - When the state of the component depends on changes in props over time.
+  - As it's static method therefore it does not have access to `this` context and we can not make use of `this.setState`, we need to simply return an `Object` that represent the new state or `null`.
   - Do not cause side effects. Ex: HTTP requests
 - Render
   - Only required method in component
