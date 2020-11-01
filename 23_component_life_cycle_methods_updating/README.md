@@ -1,26 +1,26 @@
 ## Updating Lifecycle Methods
 
-- static getDerivedStateFromProps(props, state)
+- `static getDerivedStateFromProps(props, state)`
   - This lifecycle method is called when state of the component depends on changes in props over time
   - This method is called every time a component is re-renderd
   - As it's static method therefore it does not have access to `this` context and we can not make use of `this.setState`, we need to simply return an `Object` that represent the new state.
   - Do not cause side effects.
     - Side effect means interact with DOM or perform any AJAX calls to load data
-- shouldComponentUpdate(nextProps, nextState)  
+- `shouldComponentUpdate(nextProps, nextState)`
   - It dictates if component should re-render or not.
   - By default all class components will re-render whenever the props they recieve or their state changes, this method can prevent that default behaviour by returning `false`. Thus, this method is specifically for optimization.
   - Do not cause side effects
     - Side effect means interact with DOM or perform any AJAX calls to load data
-- Render
+- `render`
   - Only required method in component
   - Read props & state and return JSX which describe the UI.
   - render function is a pure function.
   - Do not change state or interact with DOM or make AJAX calls.
   - Children components lifecycle methods are also executed.
-- getSnapShotBeforeUpdate(prevProps, prevState)
+- `getSnapShotBeforeUpdate(prevProps, prevState)`
    - Called right before the changes from Virtual DOM are to be reflected in the DOM
    - Use case: We could use this method to capture some information from the DOM like: We may want to read user's scroll position and after the update maintain the scroll position by performing some calculation.
   - This method will either return null or value. Returned value will be passed as the third parameter to the next method. 
- - componentDidUpdate(prevProp, prevState, snapshotValue)
+ - `componentDidUpdate(prevProp, prevState, snapshotValue)`
    - It's called after the render is finished in the re-render cycle.
    - We may cause side effects inside it.
