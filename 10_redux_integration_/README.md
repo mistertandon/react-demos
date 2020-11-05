@@ -11,7 +11,7 @@
   - The Redux store saves the complete state tree returned by the root reducer. This new tree is now the next state of your app! Every listener registered with store.subscribe(listener)
 
 ### `connect(mapStateToProps?, mapDispatchToProps?, mergeProps?, options?)`
-- Connects a React component to a Redux store.
+- Connects is a React component to a Redux store.
 - It does not modify the component class passed to it; instead, it returns a new, connected component for you to use.  
 - Without arguments, just wraps the component, without changing the behavior / props
 -  If a `mapStateToProps?: (state, ownProps?) => Object` function is specified, the new wrapper component will subscribe to Redux store updates.
