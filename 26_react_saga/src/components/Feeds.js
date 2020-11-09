@@ -17,19 +17,24 @@ class Feeds extends Component {
 
         return (
             <Fragment>
-                <div>
-                    {
-                        Array.isArray(data)
-                        && data.length > 0
-                        && data.map(({ id, author, url }) =>
-                            (
-                                <div key={id}>
-                                    {
-                                        author
-                                    }
-                                </div>
-                            ))
-                    }
+                <div className="container">
+                    <div className="author__container">
+                        {
+                            Array.isArray(data)
+                            && data.length > 0
+                            && data.map(({ id, author, url }) =>
+                                (
+                                    <div key={id}>
+                                        {
+                                            author
+                                        }
+                                    </div>
+                                ))
+                        }
+                    </div>
+                    <div className="suggestion__container">
+                        
+                    </div>
                 </div>
 
             </Fragment>
