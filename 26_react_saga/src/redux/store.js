@@ -2,7 +2,7 @@ import { combineReducers, createStore, compose, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 
 import { fetchFeedsReducer } from './reducer/fetchFeeds.reducer';
-
+import { rootSaga } from './rootSaga';
 
 const appReducers = combineReducers({
     feeds: fetchFeedsReducer
@@ -14,6 +14,9 @@ const saga = createSagaMiddleware();
 
 const appMiddlewares = [saga];
 
-export const store = createStore(appReducers,
+export const store = createStore(
+    appReducers,
     composeEnhancer(applyMiddleware([...appMiddlewares]))
 )
+
+saga.run(rootSaga);
