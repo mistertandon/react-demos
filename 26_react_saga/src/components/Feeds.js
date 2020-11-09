@@ -9,28 +9,42 @@ class Feeds extends Component {
 
         super(props);
 
-        this.state = {
-            feeds: []
-        }
     }
 
     render() {
 
+        const { data } = this.props.feeds;
+
         return (
             <Fragment>
-                Hello from Feeds component
+                <div>
+                    {
+                        Array.isArray(data)
+                        && data.length > 0
+                        && data.map(({ id, author, url }) =>
+                            (
+                                <div key={id}>
+                                    {
+                                        author
+                                    }
+                                </div>
+                            ))
+                    }
+                </div>
+
             </Fragment>
         )
     }
 
-    componentDidMount(){
+    componentDidMount() {
 
         this.props.fetchFeedsBySaga();
     }
 }
 
+
 const mapStateToProps = (state) => {
-    console.log(state);
+
     return state;
 }
 
