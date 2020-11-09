@@ -8,7 +8,6 @@ class Feeds extends Component {
     constructor(props) {
 
         super(props);
-
     }
 
     render() {
@@ -33,7 +32,7 @@ class Feeds extends Component {
                         }
                     </div>
                     <div className="suggestion__container">
-                        
+
                     </div>
                 </div>
 
@@ -49,7 +48,7 @@ class Feeds extends Component {
 
 
 const mapStateToProps = (state) => {
-
+    console.log(state);
     return state;
 }
 
