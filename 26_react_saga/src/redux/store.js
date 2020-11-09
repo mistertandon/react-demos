@@ -16,7 +16,7 @@ const appMiddlewares = [saga];
 
 export const store = createStore(
     appReducers,
-    composeEnhancer(applyMiddleware([...appMiddlewares]))
+    composeEnhancer(applyMiddleware(...appMiddlewares))
 )
 
 saga.run(rootSaga);

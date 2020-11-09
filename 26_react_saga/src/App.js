@@ -1,10 +1,12 @@
-import logo from './logo.svg';
 import './App.css';
 
+import Feeds from './components/Feeds';
+
 function App() {
+  
   return (
     <div className="App">
-      Hello from App component.
+      <Feeds />
     </div>
   );
 }

@@ -14,7 +14,7 @@ export const fetchFeedsReducer = (state = initState, action) => {
 
         case FETCH_FEED_ACTIONS.SUCCESS: return { ...state, loading: false, error: undefined, data: action.payload };
 
-        case FETCH_FEED_ACTIONS.FAILURE: return { ...state, loading: false, error: payload, data: null };
+        case FETCH_FEED_ACTIONS.FAILURE: return { ...state, loading: false, error: action.payload, data: null };
 
         default: return {...state}
     }
