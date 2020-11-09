@@ -1,4 +1,7 @@
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
+
+import { fetchFeedStart } from './../redux/action/fetchFeeds.action';
 
 class Feeds extends Component {
 
@@ -19,6 +22,22 @@ class Feeds extends Component {
             </Fragment>
         )
     }
+
+    componentDidMount(){
+
+        this.props.fetchFeedsBySaga();
+    }
 }
 
-export default Feeds;
+const mapStateToProps = (state) => {
+    console.log(state);
+    return state;
+}
+
+const mapDispatchToProps = (dispatch) => {
+
+    return {
+        fetchFeedsBySaga: () => dispatch(fetchFeedStart())
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Feeds);

@@ -8,7 +8,7 @@ const appReducers = combineReducers({
     feeds: fetchFeedsReducer
 });
 
-const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+// const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const saga = createSagaMiddleware();
 
@@ -16,7 +16,7 @@ const appMiddlewares = [saga];
 
 export const store = createStore(
     appReducers,
-    composeEnhancer(applyMiddleware(...appMiddlewares))
+    applyMiddleware(...appMiddlewares)
 )
 
 saga.run(rootSaga);
