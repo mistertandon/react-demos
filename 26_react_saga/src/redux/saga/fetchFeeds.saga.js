@@ -15,7 +15,6 @@ function* workerFetchFeeds() {
 
         const result = yield call(axiosConfig.get, "https://picsum.photos/v2/list");
 
-
         yield put(fetchFeedSuccess(result.data));
     } catch (e) {
 
