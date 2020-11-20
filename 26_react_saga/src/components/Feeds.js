@@ -46,7 +46,6 @@ class Feeds extends Component {
     }
 }
 
-
 const mapStateToProps = (state) => {
     console.log(state);
     return state;
@@ -58,4 +57,5 @@ const mapDispatchToProps = (dispatch) => {
         fetchFeedsBySaga: () => dispatch(fetchFeedStart())
     }
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(Feeds);
