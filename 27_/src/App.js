@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
 import Login from './components/login';
 import Home from './components/home';
-
+import ProtectedRoute from './routes/ProtectedRoute';
 import './App.css';
 
 class App extends Component {
@@ -25,7 +25,7 @@ class App extends Component {
         </ul>
         <Switch>
           <Route exact path='/' component={Login} />
-          <Route exact path='/home' component={Home} />
+          <ProtectedRoute exact path='/home' component={Home} />
         </Switch>
       </Router>
 
