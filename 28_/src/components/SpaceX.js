@@ -17,17 +17,16 @@ const SpaceX = () => {
 
                     setSpaceXData(result.data);
 
-                    // const yearsInfo = result.data.map(spaceX => parseInt(spaceX.launch_year, 10));
+                    const yearsInfo = result.data.map(spaceX => parseInt(spaceX.launch_year, 10));
 
-                    // let uniqueYears = new Set(yearsInfo);
+                    let uniqueYears = new Set(yearsInfo);
 
-                    // setYearsList(uniqueYears);
-                    // console.log(uniqueYears);
-
+                    setYearsList([...uniqueYears]);
                 }
             } catch (err) {
-                console.log('err', err);
+
                 setSpaceXData([]);
+                setYearsList([]);
             }
 
         }
@@ -41,11 +40,15 @@ const SpaceX = () => {
             <div className='container'>
                 {
                     spaceXData.length
-                    && Array.isArray(spaceXData)
+                    // && Array.isArray(spaceXData)
                     && (
                         <Fragment>
                             <div className='sidebar'>
                                 <div className='launch_year__container'>
+                                    Hello from launch year
+                                    {
+                                        console.log(yearsList)
+                                    }
                                     {
                                         yearsList.length
                                         // && Array.isArray(yearsList)
