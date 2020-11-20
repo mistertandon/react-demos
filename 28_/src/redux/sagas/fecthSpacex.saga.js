@@ -11,7 +11,7 @@ import {
     allSpaceXDataStatusError
 } from './../actions/spacex.action';
 
-export function workerAllSpacexData() {
+export function* workerAllSpacexData() {
 
     try {
 
@@ -26,7 +26,7 @@ export function workerAllSpacexData() {
     }
 }
 
-export function watcherAllSpacexData() {
+export function* watcherAllSpacexData() {
 
     yield takeLatest(GET_ALL_SPACEX_DATA, workerAllSpacexData);
 }
