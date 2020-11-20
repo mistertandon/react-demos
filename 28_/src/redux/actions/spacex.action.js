@@ -1,27 +1,27 @@
 import {
-    GET_SPACEX_DATA_ALL,
-    GET_SPACEX_DATA_STATUS_SUCCESS,
-    GET_SPACEX_DATA_STATUS_ERROR
+    GET_ALL_SPACEX_DATA,
+    ALL_SPACEX_DATA_STATUS_SUCCESS,
+    ALL_SPACEX_DATA_STATUS_ERROR
 } from './spacex.constant';
 
-export const getSpaceXDataAll = () => {
+export const getAllSpaceXData = () => {
 
     return {
-        type: GET_SPACEX_DATA_ALL
+        type: GET_ALL_SPACEX_DATA
     }
 }
 
-export const fecthSpaceXSuccess = (data) => {
+export const allSpaceXDataStatusSuccess = (data) => {
 
     return {
-        type: GET_SPACEX_DATA_STATUS_SUCCESS,
+        type: ALL_SPACEX_DATA_STATUS_SUCCESS,
         data
     }
 }
-export const fecthSpaceXError = (error) => {
+export const allSpaceXDataStatusError = (error) => {
 
     return {
-        type: GET_SPACEX_DATA_STATUS_ERROR,
+        type: ALL_SPACEX_DATA_STATUS_ERROR,
         error
     }
 }
