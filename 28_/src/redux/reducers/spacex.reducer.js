@@ -1,7 +1,7 @@
 import {
     ALL_SPACEX_DATA_STATUS_SUCCESS,
     ALL_SPACEX_DATA_STATUS_ERROR
-} from './spacex.constant';
+} from './../actions/spacex.constant';
 
 const initStat = {
     isError: false,

@@ -1,88 +1,40 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import axios from 'axios';
+import { connect } from 'react-redux';
+import { getAllSpaceXData } from './../redux/actions/spacex.action';
 
-const SpaceX = () => {
+const SpaceX = (props) => {
 
     const [spaceXData, setSpaceXData] = useState([]);
     const [yearsList, setYearsList] = useState([]);
 
     useEffect(() => {
 
-        const getSpaceXData = async () => {
+        console.log(props);
+        const { fetchAllSpaceXData } = props;
+        fetchAllSpaceXData();
 
-            try {
-                const result = await axios.get('https://api.spacexdata.com/v3/launches?limit=100&launch_success=true');
-                console.log('result', result);
-                if (result.data.length) {
-
-                    setSpaceXData(result.data);
-
-                    const yearsInfo = result.data.map(spaceX => parseInt(spaceX.launch_year, 10));
-
-                    let uniqueYears = new Set(yearsInfo);
-
-                    setYearsList([...uniqueYears]);
-                }
-            } catch (err) {
-
-                setSpaceXData([]);
-                setYearsList([]);
-            }
-
-        }
-
-        getSpaceXData();
     }, []);
 
     return (
 
         <Fragment>
-            <div className='container'>
-                {
-                    spaceXData.length
-                    // && Array.isArray(spaceXData)
-                    && (
-                        <Fragment>
-                            <div className='sidebar'>
-                                <div className='launch_year__container'>
-                                    Hello from launch year
-                                    {
-                                        console.log(yearsList)
-                                    }
-                                    {
-                                        yearsList.length
-                                        // && Array.isArray(yearsList)
-                                        && yearsList.map((year, idx) => (
-
-                                            <div key={idx}>
-                                                {
-                                                    year
-                                                }
-                                            </div>
-                                        ))
-
-
-
-                                    }
-                                </div>
-                                <div className='launch_status__container'>
-                                    Hello from launch status
-                                </div>
-                                <div className='landing_status__container'>
-                                    Hello from landing status
-                                </div>
-                            </div>
-                            <div className='content'>
-                                Hello from content
-                            </div>
-                        </Fragment>
-                    )
-                }
-
-            </div>
+            Hello from SpaceX component
         </Fragment>
     );
 
 }
 
-export default SpaceX;
+const mapStateToProps = (state) => {
+    console.log('state', state);
+    return state;
+}
+
+const mapDispatchToProps = (dispatch) => {
+
+    return {
+
+        fetchAllSpaceXData: () => dispatch(getAllSpaceXData())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SpaceX);
