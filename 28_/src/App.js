@@ -1,42 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { Component, Fragment, useEffect, useState } from 'react';
+import SpaceX from './components/SpaceX';
 
-const App = () => {
+class App extends Component {
 
-  const [count, setCount] = useState(5);
+  render() {
 
-  useEffect(
-    () => {
+    return (
 
-      if (timeRef) {
+      <div className="App" >
+        <SpaceX />
+      </div>
 
-        clearInterval(timeRef);
-      }
+    );
 
-      const updateCounter = (refCount) => {
-
-        setCount(refCount - 1);
-      }
-
-      if (count > 0) {
-
-        var timeRef = setInterval(function () {
-
-          let countContext = count;
-          updateCounter(countContext);
-        },
-          2000);
-      }
-
-    }, [count]
-  )
-
-  return (
-    <div className="App">
-      {
-        count
-      }
-    </div>
-  );
+  }
 }
 
 export default App;
