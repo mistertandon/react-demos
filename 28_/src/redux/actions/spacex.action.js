@@ -1,7 +1,8 @@
 import {
     GET_ALL_SPACEX_DATA,
     ALL_SPACEX_DATA_STATUS_SUCCESS,
-    ALL_SPACEX_DATA_STATUS_ERROR
+    ALL_SPACEX_DATA_STATUS_ERROR,
+    SET_YEARS_LIST
 } from './spacex.constant';
 
 export const getAllSpaceXData = () => {
@@ -23,5 +24,13 @@ export const allSpaceXDataStatusError = (error) => {
     return {
         type: ALL_SPACEX_DATA_STATUS_ERROR,
         error
+    }
+}
+
+export const setYearsList = (data) => {
+
+    return {
+        type: SET_YEARS_LIST,
+        yearsList: data
     }
 }

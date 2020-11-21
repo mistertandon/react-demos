@@ -19,6 +19,49 @@ const SpaceX = (props) => {
 
         <Fragment>
             Hello from SpaceX component
+            {/* <div className='container'>
+                {
+                    spaceXData.length
+                    // && Array.isArray(spaceXData)
+                    && (
+                        <Fragment>
+                            <div className='sidebar'>
+                                <div className='launch_year__container'>
+                                    Hello from launch year
+                                    {
+                                        console.log(yearsList)
+                                    }
+                                    {
+                                        yearsList.length
+                                        // && Array.isArray(yearsList)
+                                        && yearsList.map((year, idx) => (
+
+                                            <div key={idx}>
+                                                {
+                                                    year
+                                                }
+                                            </div>
+                                        ))
+
+
+
+                                    }
+                                </div>
+                                <div className='launch_status__container'>
+                                    Hello from launch status
+                                </div>
+                                <div className='landing_status__container'>
+                                    Hello from landing status
+                                </div>
+                            </div>
+                            <div className='content'>
+                                Hello from content
+                            </div>
+                        </Fragment>
+                    )
+                }
+
+            </div>             */}
         </Fragment>
     );
 

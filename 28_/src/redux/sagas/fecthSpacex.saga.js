@@ -1,4 +1,3 @@
-import Axios from 'axios';
 import axios from 'axios';
 import { call, put, takeLatest } from 'redux-saga/effects';
 
@@ -8,21 +7,27 @@ import {
 
 import {
     allSpaceXDataStatusSuccess,
-    allSpaceXDataStatusError
+    allSpaceXDataStatusError,
+    setYearsList
 } from './../actions/spacex.action';
 
 export function* workerAllSpacexData() {
 
     try {
 
-        const result = yield axios.get('https://api.spacexdata.com/v3/launches?limit=100&launch_success=true');
+        const result = yield call(axios.get, 'https://api.spacexdata.com/v3/launches?limit=100&launch_success=true');
 
-        console.log('gotcha', result);
-        yield put(allSpaceXDataStatusSuccess(result));
+        yield put(allSpaceXDataStatusSuccess(result.data));
+
+        const yearsInfo = result.data.map(spaceX => parseInt(spaceX.launch_year, 10));
+
+        let uniqueYears = new Set(yearsInfo);
+
+        yield put(setYearsList([...uniqueYears]));
 
     } catch (error) {
 
-        yield put(allSpaceXDataStatusError(eror.message));
+        yield put(allSpaceXDataStatusError(error.message));
     }
 }
 
