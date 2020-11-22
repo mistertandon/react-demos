@@ -10,6 +10,8 @@ const SpaceX = (props) => {
 
     const { isError, data: spaceXData, yearsList } = props.spacex;
 
+    const [currentYear, setCurrentYear] = useState(undefined);
+
     useEffect(() => {
 
         props.fetchAllSpaceXData();
@@ -19,6 +21,17 @@ const SpaceX = (props) => {
     const launchStatus = [1, 0];
 
     const landStatus = [1, 0];
+
+    const yearHandler = (selectedYear) => {
+
+        if (selectedYear == currentYear) {
+
+            setCurrentYear(undefined);
+        } else {
+
+            setCurrentYear(selectedYear);
+        }
+    }
 
     return (
 
@@ -56,7 +69,12 @@ const SpaceX = (props) => {
                                             && Array.isArray(yearsList)
                                             && yearsList.map((year, idx) => (
 
-                                                <button key={idx} className='launch_year__btn'>
+                                                <button key={idx}
+                                                    className='launch_year__btn'
+                                                    onClick={() => {
+                                                        yearHandler(year);
+                                                    }}
+                                                >
                                                     {
                                                         year
                                                     }
@@ -89,7 +107,10 @@ const SpaceX = (props) => {
                                     <div className='landing_status'>
                                         {
                                             landStatus.map((status, idx) => (
-                                                <button key={idx} className='landing_status__text'>
+                                                // D4FF80
+                                                <button key={idx}
+                                                    className='landing_status__text'
+                                                >
                                                     {
                                                         status == 1 ? 'true' : 'false'
                                                     }
