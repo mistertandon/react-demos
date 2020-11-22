@@ -106,7 +106,7 @@ const SpaceX = (props) => {
 
                                             }, idx) => (
                                                 <div key={idx} className="spacex__tile">
-                                                    <div>
+                                                    <div className="spacex_img__container">
                                                         <img src={logo} />
                                                     </div>
                                                     <div>

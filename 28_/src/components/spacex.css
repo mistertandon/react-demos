@@ -38,20 +38,26 @@
 }
 
 .spacex__tile {
-    flex          : 1;
-    margin-left   : 5px;
-    margin-right  : 5px;
-    min-height    : 200px;
-    margin-bottom : 10px;
-    margin-top    : 10px;
-    display       : flex;
-    flex-direction: column;
+    flex           : 1;
+    margin-left    : 5px;
+    margin-right   : 5px;
+    min-height     : 200px;
+    margin-bottom  : 10px;
+    margin-top     : 10px;
+    display        : flex;
+    flex-direction : column;
+    justify-content: center;
+}
+
+.spacex_img__container {
+    text-align: center;
 }
 
 .spacex_info__containter {
-    display       : flex;
-    flex-direction: row;
-    flex-wrap     : wrap;
+    display        : flex;
+    flex-direction : row;
+    flex-wrap      : wrap;
+    justify-content: center;
 }
 
 .spacex_info__containter>div {
