@@ -43,19 +43,23 @@ const SpaceX = (props) => {
                         <Fragment>
                             <div className='sidebar'>
                                 <div className='launch_year__container'>
-                                    Launch year
-                                    {
-                                        yearsList.length
-                                        && Array.isArray(yearsList)
-                                        && yearsList.map((year, idx) => (
+                                    <div className='launch_year__header'>
+                                        Launch year
+                                    </div>
+                                    <div className='launch_years'>
+                                        {
+                                            yearsList.length
+                                            && Array.isArray(yearsList)
+                                            && yearsList.map((year, idx) => (
 
-                                            <div key={idx}>
-                                                {
-                                                    year
-                                                }
-                                            </div>
-                                        ))
-                                    }
+                                                <div key={idx} className='launch_year'>
+                                                    {
+                                                        year
+                                                    }
+                                                </div>
+                                            ))
+                                        }
+                                    </div>
                                 </div>
                                 <div className='launch_status__container'>
                                     <div className='launch_status__header'>
@@ -64,7 +68,7 @@ const SpaceX = (props) => {
                                     <div className='launch_status'>
                                         {
                                             launchStatus.map((status, idx) => (
-                                                <div key={idx}>
+                                                <div key={idx} className='launch_status__text'>
                                                     {
                                                         status == 1 ? 'True' : 'False'
                                                     }
@@ -107,14 +111,15 @@ const SpaceX = (props) => {
                                             }, idx) => (
                                                 <div key={idx} className="spacex__tile">
                                                     <div className="spacex_img__container">
-                                                        <img src={logo} />
+                                                        <img className="spacex_img" src={logo} />
                                                     </div>
-                                                    <div>
-                                                        {
-                                                            `${mission_name} #${flight_number}`
-                                                        }
-                                                    </div>
+
                                                     <div className='spacex_info__containter'>
+                                                        <div>
+                                                            {
+                                                                `${mission_name} #${flight_number}`
+                                                            }
+                                                        </div>
                                                         <div>
                                                             Mission id
                                                         </div>
