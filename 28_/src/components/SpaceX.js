@@ -68,11 +68,12 @@ const SpaceX = (props) => {
                                     <div className='launch_status'>
                                         {
                                             launchStatus.map((status, idx) => (
-                                                <div key={idx} className='launch_status__text'>
+
+                                                <button key={idx} className='launch_status__text'>
                                                     {
                                                         status == 1 ? 'True' : 'False'
                                                     }
-                                                </div>
+                                                </button>
                                             ))
                                         }
                                     </div>
@@ -84,11 +85,11 @@ const SpaceX = (props) => {
                                     <div className='landing_status'>
                                         {
                                             landStatus.map((status, idx) => (
-                                                <div key={idx}>
+                                                <button key={idx} className='landing_status__text'>
                                                     {
-                                                        status == 1 ? 'True' : 'False'
+                                                        status == 1 ? 'true' : 'false'
                                                     }
-                                                </div>
+                                                </button>
                                             ))
                                         }
                                     </div>
