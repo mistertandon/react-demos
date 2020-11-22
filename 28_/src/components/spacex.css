@@ -1,0 +1,68 @@
+* {
+    border: 1px solid black;
+}
+
+.container {
+    display: flex;
+    width  : 100%;
+}
+
+.sidebar {
+    flex: 1.5;
+}
+
+.launch_status__container,
+.landing_status__container {
+    display       : flex;
+    flex-direction: column;
+}
+
+.launch_status,
+.landing_status {
+    display: flex;
+}
+
+.launch_status>div,
+.landing_status>div {
+    flex: 1;
+}
+
+.content {
+    flex           : 8.5;
+    display        : flex;
+    flex-direction : row;
+    flex-wrap      : wrap;
+    justify-content: space-evenly;
+    align-items    : center;
+    align-content  : space-between;
+}
+
+.spacex__tile {
+    flex          : 1;
+    margin-left   : 5px;
+    margin-right  : 5px;
+    min-height    : 200px;
+    margin-bottom : 10px;
+    margin-top    : 10px;
+    display       : flex;
+    flex-direction: column;
+}
+
+.spacex_info__containter {
+    display       : flex;
+    flex-direction: row;
+    flex-wrap     : wrap;
+}
+
+.spacex_info__containter>div {
+    width: 46%;
+}
+
+.spacex_info__containter>div:nth-child(odd) {
+    font-weight: bold;
+}
+
+.spacex_info__containter>div:nth-child(6),
+.spacex_info__containter>div:nth-child(8) {
+    text-transform: capitalize;
+}
