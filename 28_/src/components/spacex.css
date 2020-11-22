@@ -23,7 +23,11 @@
 .launch_year__header,
 .launch_status__header,
 .landing_status__header {
-    text-align: center;
+    text-align   : center;
+    border       : none;
+    border-bottom: 1px solid #C7C7C7;
+    margin-top   : 10px;
+    margin-bottom: 10px;
 }
 
 .launch_years {
@@ -33,9 +37,12 @@
     justify-content: space-evenly;
 }
 
-.launch_year {
-    width     : 35%;
-    text-align: center;
+.launch_year__btn {
+    width        : 35%;
+    height       : 30px;
+    text-align   : center;
+    margin-top   : 5px;
+    margin-bottom: 5px;
 }
 
 .launch_status__container,
@@ -54,6 +61,7 @@
 .landing_status>button {
     width     : 35%;
     text-align: center;
+    height    : 30px;
 }
 
 .content {
@@ -83,7 +91,7 @@
 }
 
 .spacex_img__container {
-    width     : 255px;
+    width     : 272px;
     height    : 200px;
     align-self: center;
 }

@@ -56,11 +56,11 @@ const SpaceX = (props) => {
                                             && Array.isArray(yearsList)
                                             && yearsList.map((year, idx) => (
 
-                                                <div key={idx} className='launch_year'>
+                                                <button key={idx} className='launch_year__btn'>
                                                     {
                                                         year
                                                     }
-                                                </div>
+                                                </button>
                                             ))
                                         }
                                     </div>
