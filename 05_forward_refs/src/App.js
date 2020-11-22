@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import FRParentInput from './components/FRParentInput';
+import Items from './components/Items';
+
+const itemsArr = ['ab', 'cd', 'ef', 'gh', 'bc'];
 
 class App extends Component {
 
@@ -8,7 +10,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <FRParentInput />
+        <Items refItemsArr={itemsArr} />
       </div>
     )
 
