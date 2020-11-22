@@ -12,11 +12,12 @@ export const getAllSpaceXData = () => {
     }
 }
 
-export const allSpaceXDataStatusSuccess = (data) => {
+export const allSpaceXDataStatusSuccess = (data, yearsList) => {
 
     return {
         type: ALL_SPACEX_DATA_STATUS_SUCCESS,
-        data
+        data,
+        yearsList
     }
 }
 export const allSpaceXDataStatusError = (error) => {

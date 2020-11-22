@@ -15,16 +15,16 @@ export function* workerAllSpacexData() {
 
     try {
 
-        const result = yield call(axios.get, 'https://api.spacexdata.com/v3/launches?limit=100&launch_success=true');
-
-        yield put(allSpaceXDataStatusSuccess(result.data));
+        const result = yield call(axios.get, 'https://api.spaceXdata.com/v3/launches?limit=100');
 
         const yearsInfo = result.data.map(spaceX => parseInt(spaceX.launch_year, 10));
 
-        let uniqueYears = new Set(yearsInfo);
+        let tempUniqueYears = new Set(yearsInfo);
 
-        yield put(setYearsList([...uniqueYears]));
+        let uniqueYears = [...tempUniqueYears];
 
+        yield put(allSpaceXDataStatusSuccess(result.data, uniqueYears));
+        
     } catch (error) {
 
         yield put(allSpaceXDataStatusError(error.message));

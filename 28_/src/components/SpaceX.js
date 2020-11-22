@@ -4,25 +4,33 @@ import { getAllSpaceXData } from './../redux/actions/spacex.action';
 
 const SpaceX = (props) => {
 
-    const [spaceXData, setSpaceXData] = useState([]);
-    const [yearsList, setYearsList] = useState([]);
+    const { isError, data: spaceXData, yearsList } = props.spacex;
 
     useEffect(() => {
 
-        console.log(props);
-        const { fetchAllSpaceXData } = props;
-        fetchAllSpaceXData();
+        props.fetchAllSpaceXData();
 
     }, []);
 
     return (
 
-        <Fragment>
-            Hello from SpaceX component
-            {/* <div className='container'>
+        < Fragment >
+            {
+                
+                console.log('props: ', props)
+            }
+            {
+                
+                console.log('My data: ', isError, spaceXData, yearsList)
+            }
+            {
+                
+                console.log('My yearsList: ', yearsList)
+            }            
+            <div className='container'>
                 {
-                    spaceXData.length
-                    // && Array.isArray(spaceXData)
+                    spaceXData.length > 0
+                    && Array.isArray(spaceXData)
                     && (
                         <Fragment>
                             <div className='sidebar'>
@@ -61,14 +69,15 @@ const SpaceX = (props) => {
                     )
                 }
 
-            </div>             */}
-        </Fragment>
+            </div>
+        </Fragment >
     );
 
 }
 
 const mapStateToProps = (state) => {
     console.log('state', state);
+
     return state;
 }
 
