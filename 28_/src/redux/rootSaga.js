@@ -7,6 +7,7 @@ export function* rootSaga() {
 console.log('arguments: ', arguments);
     yield all([
         call(watcherAllSpacexData),
-        call(watcherFilteredSpacexData, ...arguments)
+        // call(watcherFilteredSpacexData, ...arguments)
+        call(watcherFilteredSpacexData)
     ]);
 }

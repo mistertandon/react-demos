@@ -56,7 +56,7 @@ const SpaceX = (props) => {
 
             let url = `https://api.spaceXdata.com/v3/launches?limit=100${queryString}`;
 
-            props.fetchFilteredSpaceXData([url]);
+            props.fetchFilteredSpaceXData(url);
         }
 
     }, [selectedYear, launchStatus, landingStatus]);
