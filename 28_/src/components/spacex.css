@@ -3,6 +3,17 @@
     /* border    : 1px solid black; */
 }
 
+.active {
+
+    background-color: #7AB800;
+    border-radius   : 5px;
+}
+
+.inactive {
+    background-color: #B4FF1F;
+    border-radius   : 5px;
+}
+
 @media only screen and (min-device-width : 320px) and (max-device-width : 736px) {
 
     .container {

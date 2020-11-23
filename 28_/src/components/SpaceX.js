@@ -19,6 +19,12 @@ const SpaceX = (props) => {
 
     const [landingStatus, setLandingStatus] = useState(null);
 
+    const [activeYearId, setActiveYearId] = useState(null);
+
+    const [activeLaunchStatusId, setActiveLaunchStatusId] = useState(null);
+
+    const [activeLandingStatusId, setActiveLandingStatusId] = useState(null);
+
     useEffect(() => {
 
         props.fetchAllSpaceXData();
@@ -69,40 +75,47 @@ const SpaceX = (props) => {
 
 
 
-    const filterSpacexDataBasedOnYear = (clickedYear) => {
+    const filterSpacexDataBasedOnYear = (selectdId, clickedYear) => {
 
         if (clickedYear === selectedYear) {
 
             setSelectedYear(null);
+            setActiveYearId(null);
         } else {
 
             setSelectedYear(clickedYear);
+            setActiveYearId(selectdId);
         }
     }
 
-    const filterSpacexDataBasedOnLaunchStatus = (isTrueClickedOption = true) => {
+    const filterSpacexDataBasedOnLaunchStatus = (selectdId, isTrueClickedOption = true) => {
 
         const isTrueClickedOptionTemp = isTrueClickedOption === 1 ? String(true) : String(false);
 
         if (launchStatus === isTrueClickedOptionTemp) {
 
             setLaunchStatus(null);
+            setActiveLaunchStatusId(null);
+
         } else {
 
             setLaunchStatus(isTrueClickedOptionTemp);
+            setActiveLaunchStatusId(selectdId);
         }
     }
 
-    const filterSpacexDataBasedOnLandingStatus = (isTrueClickedOption = true) => {
+    const filterSpacexDataBasedOnLandingStatus = (selectedId, isTrueClickedOption = true) => {
 
         const isTrueClickedOptionTemp = isTrueClickedOption === 1 ? String(true) : String(false);
 
         if (landingStatus === isTrueClickedOptionTemp) {
 
             setLandingStatus(null);
+            setActiveLandingStatusId(null);
         } else {
 
             setLandingStatus(isTrueClickedOptionTemp);
+            setActiveLandingStatusId(selectedId);
         }
     }
 
@@ -152,9 +165,9 @@ const SpaceX = (props) => {
                                         && yearsList.map((year, idx) => (
 
                                             <button key={idx}
-                                                className='launch_year__btn'
+                                                className={'launch_year__btn' + (idx === activeYearId ? ' active' : ' inactive')}
                                                 onClick={() => {
-                                                    filterSpacexDataBasedOnYear(year);
+                                                    filterSpacexDataBasedOnYear(idx, year);
                                                 }}
                                             >
                                                 {
@@ -174,10 +187,10 @@ const SpaceX = (props) => {
                                         launchStatusRef.map((status, idx) => (
 
                                             <button key={idx}
-                                                className='launch_status__text'
+                                                className={'launch_status__text' + (idx === activeLaunchStatusId ? ' active' : ' inactive')}
                                                 onClick={
                                                     () => {
-                                                        filterSpacexDataBasedOnLaunchStatus(status)
+                                                        filterSpacexDataBasedOnLaunchStatus(idx, status)
                                                     }
                                                 }
                                             >
@@ -196,12 +209,12 @@ const SpaceX = (props) => {
                                 <div className='landing_status'>
                                     {
                                         landingStatusRef.map((status, idx) => (
-                                            // D4FF80
+
                                             <button key={idx}
-                                                className='landing_status__text'
+                                                className={'landing_status__text' + (idx === activeLandingStatusId ? ' active' : ' inactive')}
                                                 onClick={
                                                     () => {
-                                                        filterSpacexDataBasedOnLandingStatus(status)
+                                                        filterSpacexDataBasedOnLandingStatus(idx, status)
                                                     }
                                                 }
                                             >
