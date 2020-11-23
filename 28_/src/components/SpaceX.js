@@ -9,7 +9,7 @@ const SpaceX = (props) => {
 
     const { isError, data: spaceXData, yearsList } = props.spacex;
 
-    const [currentYear, setCurrentYear] = useState(undefined);
+    const [selectedYear, setSelectedYear] = useState(undefined);
 
     const [launchStatus, setLaunchStatus] = useState(undefined);
 
@@ -26,20 +26,21 @@ const SpaceX = (props) => {
 
     const landingStatusRef = [1, 0];
 
-    const yearHandler = (selectedYear) => {
+    // const yearHandler = (clickedYear) => {
+    const filterSpacexDataBasedOnYear = (clickedYear) => {
 
-        if (selectedYear == currentYear) {
+        if (clickedYear === selectedYear) {
 
-            setCurrentYear(undefined);
+            setSelectedYear(undefined);
         } else {
 
-            setCurrentYear(selectedYear);
+            setSelectedYear(clickedYear);
         }
     }
 
     const filterSpacexDataBasedOnLaunchStatus = (isTrueClickedOption = true) => {
 
-        if (launchStatus == isTrueClickedOption) {
+        if (launchStatus === isTrueClickedOption) {
 
             setLaunchStatus(undefined);
         } else {
@@ -50,7 +51,7 @@ const SpaceX = (props) => {
 
     const filterSpacexDataBasedOnLandingStatus = (isTrueClickedOption = true) => {
 
-        if (landingStatus == isTrueClickedOption) {
+        if (landingStatus === isTrueClickedOption) {
 
             setLandingStatus(undefined);
         } else {
@@ -73,6 +74,10 @@ const SpaceX = (props) => {
             {
 
                 console.log('My yearsList: ', yearsList)
+            }
+            {
+
+                console.log('selectedYear: ', selectedYear)
             }
             {
 
@@ -107,7 +112,7 @@ const SpaceX = (props) => {
                                                 <button key={idx}
                                                     className='launch_year__btn'
                                                     onClick={() => {
-                                                        yearHandler(year);
+                                                        filterSpacexDataBasedOnYear(year);
                                                     }}
                                                 >
                                                     {
@@ -135,7 +140,7 @@ const SpaceX = (props) => {
                                                     }
                                                 >
                                                     {
-                                                        status == 1 ? 'True' : 'False'
+                                                        status === 1 ? 'True' : 'False'
                                                     }
                                                 </button>
                                             ))
@@ -159,7 +164,7 @@ const SpaceX = (props) => {
                                                     }
                                                 >
                                                     {
-                                                        status == 1 ? 'true' : 'false'
+                                                        status === 1 ? 'true' : 'false'
                                                     }
                                                 </button>
                                             ))
