@@ -52,11 +52,13 @@ const SpaceX = (props) => {
 
                 queryString += `&${key}=${queryStringObj[key]}`;
             }
-            console.log('inside: queryStringObj: ', queryStringObj);
 
             let url = `https://api.spaceXdata.com/v3/launches?limit=100${queryString}`;
 
             props.fetchFilteredSpaceXData(url);
+        } else {
+
+            props.fetchAllSpaceXData();
         }
 
     }, [selectedYear, launchStatus, landingStatus]);
@@ -136,159 +138,162 @@ const SpaceX = (props) => {
                 SpaceX Launch Programs
             </div>
             <div className='container'>
-
                 {
-                    spaceXData.length > 0
-                    && Array.isArray(spaceXData)
-                    && (
-                        <Fragment>
-                            <div className='sidebar'>
-                                <div className='launch_year__container'>
-                                    <div className='launch_year__header'>
-                                        Launch year
+                    <Fragment>
+                        <div className='sidebar'>
+                            <div className='launch_year__container'>
+                                <div className='launch_year__header'>
+                                    Launch year
                                     </div>
-                                    <div className='launch_years'>
-                                        {
-                                            yearsList.length
-                                            && Array.isArray(yearsList)
-                                            && yearsList.map((year, idx) => (
+                                <div className='launch_years'>
+                                    {
+                                        yearsList.length > 0
+                                        && Array.isArray(yearsList)
+                                        && yearsList.map((year, idx) => (
 
-                                                <button key={idx}
-                                                    className='launch_year__btn'
-                                                    onClick={() => {
-                                                        filterSpacexDataBasedOnYear(year);
-                                                    }}
-                                                >
-                                                    {
-                                                        year
-                                                    }
-                                                </button>
-                                            ))
-                                        }
-                                    </div>
-                                </div>
-                                <div className='launch_status__container'>
-                                    <div className='launch_status__header'>
-                                        Successful Launch
-                                    </div>
-                                    <div className='launch_status'>
-                                        {
-                                            launchStatusRef.map((status, idx) => (
-
-                                                <button key={idx}
-                                                    className='launch_status__text'
-                                                    onClick={
-                                                        () => {
-                                                            filterSpacexDataBasedOnLaunchStatus(status)
-                                                        }
-                                                    }
-                                                >
-                                                    {
-                                                        status === 1 ? 'True' : 'False'
-                                                    }
-                                                </button>
-                                            ))
-                                        }
-                                    </div>
-                                </div>
-                                <div className='landing_status__container'>
-                                    <div className='landing_status__header'>
-                                        Successful Landing
-                                    </div>
-                                    <div className='landing_status'>
-                                        {
-                                            landingStatusRef.map((status, idx) => (
-                                                // D4FF80
-                                                <button key={idx}
-                                                    className='landing_status__text'
-                                                    onClick={
-                                                        () => {
-                                                            filterSpacexDataBasedOnLandingStatus(status)
-                                                        }
-                                                    }
-                                                >
-                                                    {
-                                                        status === 1 ? 'true' : 'false'
-                                                    }
-                                                </button>
-                                            ))
-                                        }
-                                    </div>
+                                            <button key={idx}
+                                                className='launch_year__btn'
+                                                onClick={() => {
+                                                    filterSpacexDataBasedOnYear(year);
+                                                }}
+                                            >
+                                                {
+                                                    year
+                                                }
+                                            </button>
+                                        ))
+                                    }
                                 </div>
                             </div>
-                            <div className='content'>
-                                {
-                                    spaceXData.length > 0
-                                    && Array.isArray(spaceXData)
-                                    && spaceXData.map(
-                                        (
-                                            {
-                                                mission_name,
-                                                flight_number,
-                                                mission_id,
-                                                launch_year,
-                                                launch_success,
-                                                rocket: { first_stage: { cores: [{ land_success }] } }
+                            <div className='launch_status__container'>
+                                <div className='launch_status__header'>
+                                    Successful Launch
+                                    </div>
+                                <div className='launch_status'>
+                                    {
+                                        launchStatusRef.map((status, idx) => (
 
-                                            }, idx) => (
-                                                <div key={idx} className="spacex__tile">
-                                                    <div className="spacex_img__container">
-                                                        <img className="spacex_img" src={logo} />
-                                                    </div>
+                                            <button key={idx}
+                                                className='launch_status__text'
+                                                onClick={
+                                                    () => {
+                                                        filterSpacexDataBasedOnLaunchStatus(status)
+                                                    }
+                                                }
+                                            >
+                                                {
+                                                    status === 1 ? 'True' : 'False'
+                                                }
+                                            </button>
+                                        ))
+                                    }
+                                </div>
+                            </div>
+                            <div className='landing_status__container'>
+                                <div className='landing_status__header'>
+                                    Successful Landing
+                                    </div>
+                                <div className='landing_status'>
+                                    {
+                                        landingStatusRef.map((status, idx) => (
+                                            // D4FF80
+                                            <button key={idx}
+                                                className='landing_status__text'
+                                                onClick={
+                                                    () => {
+                                                        filterSpacexDataBasedOnLandingStatus(status)
+                                                    }
+                                                }
+                                            >
+                                                {
+                                                    status === 1 ? 'true' : 'false'
+                                                }
+                                            </button>
+                                        ))
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div className='content'>
+                            {
+                                spaceXData.length > 0
+                                && Array.isArray(spaceXData)
+                                && spaceXData.map(
+                                    (
+                                        {
+                                            mission_name,
+                                            flight_number,
+                                            mission_id,
+                                            launch_year,
+                                            launch_success,
+                                            rocket: { first_stage: { cores: [{ land_success }] } }
 
-                                                    <div className='spacex_info__containter'>
-                                                        <div>
-                                                            {
-                                                                `${mission_name} #${flight_number}`
-                                                            }
-                                                        </div>
-                                                        <div>
-                                                            Mission id
-                                                        </div>
-                                                        <div>
-                                                            {
-                                                                mission_id.length > 0
-                                                                && (
-                                                                    mission_id.join(', ')
-                                                                )
-                                                            }
-                                                            {
-                                                                mission_id.length === 0 && '--'
-                                                            }
-                                                        </div>
-                                                        <div>
-                                                            Launch year
-                                                        </div>
-                                                        <div>
-                                                            {
-                                                                launch_year
-                                                            }
-                                                        </div>
-                                                        <div>
-                                                            Successful Launch
-                                                        </div>
-                                                        <div>
-                                                            {
-                                                                `${launch_success}`
-                                                            }
-                                                        </div>
-                                                        <div>
-                                                            Successful Landing
-                                                        </div>
-                                                        <div>
-                                                            {
-                                                                land_success == null ? '--' : `${land_success}`
-
-                                                            }
-                                                        </div>
-                                                    </div>
-
+                                        }, idx) => (
+                                            <div key={idx} className="spacex__tile">
+                                                <div className="spacex_img__container">
+                                                    <img className="spacex_img" src={logo} />
                                                 </div>
-                                            ))
-                                }
-                            </div>
-                        </Fragment>
-                    )
+
+                                                <div className='spacex_info__containter'>
+                                                    <div>
+                                                        {
+                                                            `${mission_name} #${flight_number}`
+                                                        }
+                                                    </div>
+                                                    <div>
+                                                        Mission id
+                                                    </div>
+                                                    <div>
+                                                        {
+                                                            mission_id.length > 0
+                                                            && (
+                                                                mission_id.join(', ')
+                                                            )
+                                                        }
+                                                        {
+                                                            mission_id.length === 0 && '--'
+                                                        }
+                                                    </div>
+                                                    <div>
+                                                        Launch year
+                                                        </div>
+                                                    <div>
+                                                        {
+                                                            launch_year
+                                                        }
+                                                    </div>
+                                                    <div>
+                                                        Successful Launch
+                                                        </div>
+                                                    <div>
+                                                        {
+                                                            `${launch_success}`
+                                                        }
+                                                    </div>
+                                                    <div>
+                                                        Successful Landing
+                                                    </div>
+                                                    <div>
+                                                        {
+                                                            land_success == null ? '--' : `${land_success}`
+
+                                                        }
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        ))
+                            }
+                            {
+                                spaceXData.length === 0
+                                && (
+                                    <div className='empty_container'>
+                                        No Record found
+                                    </div>
+                                )
+                            }
+                        </div>
+                    </Fragment>
                 }
 
             </div>

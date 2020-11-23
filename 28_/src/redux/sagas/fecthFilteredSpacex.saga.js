@@ -5,13 +5,24 @@ import {
     GET_FILTERED_SPACEX_DATA
 } from './../actions/spacex.constant';
 
+import {
+    filteredSpaceXDataStatusSuccess,
+    filteredSpaceXDataStatusError
+} from './../actions/spacex.action';
+
 function* workerFilteredSpacexData(passedArgs) {
 
-    const { payload: { url } } = passedArgs
+    try {
 
-    const result = yield call(axios.get, url);
+        const { payload: { url } } = passedArgs
 
-    console.log('result.data: ', result.data);
+        const result = yield call(axios.get, url);
+        console.log('result: ',result);
+        yield put(filteredSpaceXDataStatusSuccess(result.data));
+    } catch (error) {
+
+        yield put(filteredSpaceXDataStatusError(error.message));
+    }
 }
 
 export function* watcherFilteredSpacexData() {
