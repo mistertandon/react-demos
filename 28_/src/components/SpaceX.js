@@ -11,7 +11,10 @@ const SpaceX = (props) => {
 
     const [currentYear, setCurrentYear] = useState(undefined);
 
+    const [launchStatus, setLaunchStatus] = useState(undefined);
+
     const [landingStatus, setLandingStatus] = useState(undefined);
+
 
     useEffect(() => {
 
@@ -19,9 +22,9 @@ const SpaceX = (props) => {
 
     }, []);
 
-    const launchStatus = [1, 0];
+    const launchStatusRef = [1, 0];
 
-    const landStatus = [1, 0];
+    const landingStatusRef = [1, 0];
 
     const yearHandler = (selectedYear) => {
 
@@ -31,6 +34,17 @@ const SpaceX = (props) => {
         } else {
 
             setCurrentYear(selectedYear);
+        }
+    }
+
+    const filterSpacexDataBasedOnLaunchStatus = (isTrueClickedOption = true) => {
+
+        if (launchStatus == isTrueClickedOption) {
+
+            setLaunchStatus(undefined);
+        } else {
+
+            setLaunchStatus(isTrueClickedOption);
         }
     }
 
@@ -62,8 +76,13 @@ const SpaceX = (props) => {
             }
             {
 
+                console.log('launchStatus: ', launchStatus)
+            }
+            {
+
                 console.log('landingStatus: ', landingStatus)
             }
+
             <div className='app__header'>
                 SpaceX Launch Programs
             </div>
@@ -105,9 +124,16 @@ const SpaceX = (props) => {
                                     </div>
                                     <div className='launch_status'>
                                         {
-                                            launchStatus.map((status, idx) => (
+                                            launchStatusRef.map((status, idx) => (
 
-                                                <button key={idx} className='launch_status__text'>
+                                                <button key={idx}
+                                                    className='launch_status__text'
+                                                    onClick={
+                                                        () => {
+                                                            filterSpacexDataBasedOnLaunchStatus(status)
+                                                        }
+                                                    }
+                                                >
                                                     {
                                                         status == 1 ? 'True' : 'False'
                                                     }
@@ -122,7 +148,7 @@ const SpaceX = (props) => {
                                     </div>
                                     <div className='landing_status'>
                                         {
-                                            landStatus.map((status, idx) => (
+                                            landingStatusRef.map((status, idx) => (
                                                 // D4FF80
                                                 <button key={idx}
                                                     className='landing_status__text'
