@@ -7,8 +7,7 @@ import {
 
 import {
     allSpaceXDataStatusSuccess,
-    allSpaceXDataStatusError,
-    setYearsList
+    allSpaceXDataStatusError
 } from './../actions/spacex.action';
 
 export function* workerAllSpacexData() {

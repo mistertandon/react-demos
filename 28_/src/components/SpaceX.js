@@ -2,19 +2,22 @@ import React, { Fragment, useEffect, useState } from 'react';
 
 import './spacex.css';
 import { connect } from 'react-redux';
-import { getAllSpaceXData } from './../redux/actions/spacex.action';
+import {
+    getAllSpaceXData,
+    getFilteredSpaceXData
+} from './../redux/actions/spacex.action';
+
 import logo from './../spacex_desk.png';
 
 const SpaceX = (props) => {
 
     const { isError, data: spaceXData, yearsList } = props.spacex;
 
-    const [selectedYear, setSelectedYear] = useState(undefined);
+    const [selectedYear, setSelectedYear] = useState(null);
 
-    const [launchStatus, setLaunchStatus] = useState(undefined);
+    const [launchStatus, setLaunchStatus] = useState(null);
 
-    const [landingStatus, setLandingStatus] = useState(undefined);
-
+    const [landingStatus, setLandingStatus] = useState(null);
 
     useEffect(() => {
 
@@ -22,15 +25,53 @@ const SpaceX = (props) => {
 
     }, []);
 
+    useEffect(() => {
+
+
+        let queryStringObj = {};
+
+        if (selectedYear !== null) {
+
+            queryStringObj['launch_year'] = selectedYear;
+        }
+
+        if (launchStatus !== null) {
+
+            queryStringObj['launch_success'] = String(launchStatus);
+        }
+
+        if (landingStatus !== null) {
+
+            queryStringObj['land_success'] = String(landingStatus);
+        }
+
+        if (Object.keys(queryStringObj).length > 0) {
+
+            let queryString = '';
+            for (let key in queryStringObj) {
+
+                queryString += `&${key}=${queryStringObj[key]}`;
+            }
+            console.log('inside: queryStringObj: ', queryStringObj);
+
+            let url = `https://api.spaceXdata.com/v3/launches?limit=100${queryString}`;
+
+            props.fetchFilteredSpaceXData([url]);
+        }
+
+    }, [selectedYear, launchStatus, landingStatus]);
+
     const launchStatusRef = [1, 0];
 
     const landingStatusRef = [1, 0];
+
+
 
     const filterSpacexDataBasedOnYear = (clickedYear) => {
 
         if (clickedYear === selectedYear) {
 
-            setSelectedYear(undefined);
+            setSelectedYear(null);
         } else {
 
             setSelectedYear(clickedYear);
@@ -39,23 +80,27 @@ const SpaceX = (props) => {
 
     const filterSpacexDataBasedOnLaunchStatus = (isTrueClickedOption = true) => {
 
-        if (launchStatus === isTrueClickedOption) {
+        const isTrueClickedOptionTemp = isTrueClickedOption === 1 ? String(true) : String(false);
 
-            setLaunchStatus(undefined);
+        if (launchStatus === isTrueClickedOptionTemp) {
+
+            setLaunchStatus(null);
         } else {
 
-            setLaunchStatus(isTrueClickedOption);
+            setLaunchStatus(isTrueClickedOptionTemp);
         }
     }
 
     const filterSpacexDataBasedOnLandingStatus = (isTrueClickedOption = true) => {
 
-        if (landingStatus === isTrueClickedOption) {
+        const isTrueClickedOptionTemp = isTrueClickedOption === 1 ? String(true) : String(false);
 
-            setLandingStatus(undefined);
+        if (landingStatus === isTrueClickedOptionTemp) {
+
+            setLandingStatus(null);
         } else {
 
-            setLandingStatus(isTrueClickedOption);
+            setLandingStatus(isTrueClickedOptionTemp);
         }
     }
 
@@ -262,7 +307,8 @@ const mapDispatchToProps = (dispatch) => {
 
     return {
 
-        fetchAllSpaceXData: () => dispatch(getAllSpaceXData())
+        fetchAllSpaceXData: () => dispatch(getAllSpaceXData()),
+        fetchFilteredSpaceXData: (queryString) => dispatch(getFilteredSpaceXData(queryString))
     }
 }
 

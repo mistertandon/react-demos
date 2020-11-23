@@ -5,7 +5,7 @@ import {
     GET_FILTERED_SPACEX_DATA,
     FILTERED_SPACEX_DATA_STATUS_ERROR,
     FILTERED_SPACEX_DATA_STATUS_SUCCESS,
-    SET_YEARS_LIST
+    // SET_YEARS_LIST
 } from './spacex.constant';
 
 export const getAllSpaceXData = () => {
@@ -32,11 +32,14 @@ export const allSpaceXDataStatusError = (error) => {
     }
 }
 
-export const getFilteredSpaceXData = () => {
+export const getFilteredSpaceXData = (url) => {
 
     return {
 
-        type: GET_FILTERED_SPACEX_DATA
+        type: GET_FILTERED_SPACEX_DATA,
+        payload: {
+            url
+        }
     }
 }
 
@@ -53,13 +56,5 @@ export const filteredSpaceXDataStatusError = (error) => {
     return {
         type: FILTERED_SPACEX_DATA_STATUS_ERROR,
         error
-    }
-}
-
-export const setYearsList = (data) => {
-
-    return {
-        type: SET_YEARS_LIST,
-        yearsList: data
     }
 }
