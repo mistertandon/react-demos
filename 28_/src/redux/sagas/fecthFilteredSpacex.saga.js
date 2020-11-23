@@ -17,7 +17,7 @@ function* workerFilteredSpacexData(passedArgs) {
         const { payload: { url } } = passedArgs
 
         const result = yield call(axios.get, url);
-        console.log('result: ',result);
+
         yield put(filteredSpaceXDataStatusSuccess(result.data));
     } catch (error) {
 
@@ -26,8 +26,6 @@ function* workerFilteredSpacexData(passedArgs) {
 }
 
 export function* watcherFilteredSpacexData() {
-
-    console.log('watcher | queryString : ', arguments);
 
     yield takeLatest(GET_FILTERED_SPACEX_DATA, workerFilteredSpacexData, ...arguments)
 }
