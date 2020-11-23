@@ -4,13 +4,14 @@ import './spacex.css';
 import { connect } from 'react-redux';
 import { getAllSpaceXData } from './../redux/actions/spacex.action';
 import logo from './../spacex_desk.png';
-// import logo from './../spacex_desk.png';
 
 const SpaceX = (props) => {
 
     const { isError, data: spaceXData, yearsList } = props.spacex;
 
     const [currentYear, setCurrentYear] = useState(undefined);
+
+    const [landingStatus, setLandingStatus] = useState(undefined);
 
     useEffect(() => {
 
@@ -33,6 +34,17 @@ const SpaceX = (props) => {
         }
     }
 
+    const filterSpacexDataBasedOnLandingStatus = (isTrueClickedOption = true) => {
+
+        if (landingStatus == isTrueClickedOption) {
+
+            setLandingStatus(undefined);
+        } else {
+
+            setLandingStatus(isTrueClickedOption);
+        }
+    }
+
     return (
 
         < Fragment >
@@ -47,6 +59,10 @@ const SpaceX = (props) => {
             {
 
                 console.log('My yearsList: ', yearsList)
+            }
+            {
+
+                console.log('landingStatus: ', landingStatus)
             }
             <div className='app__header'>
                 SpaceX Launch Programs
@@ -110,6 +126,11 @@ const SpaceX = (props) => {
                                                 // D4FF80
                                                 <button key={idx}
                                                     className='landing_status__text'
+                                                    onClick={
+                                                        () => {
+                                                            filterSpacexDataBasedOnLandingStatus(status)
+                                                        }
+                                                    }
                                                 >
                                                     {
                                                         status == 1 ? 'true' : 'false'
