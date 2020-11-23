@@ -26,7 +26,6 @@ const SpaceX = (props) => {
 
     const landingStatusRef = [1, 0];
 
-    // const yearHandler = (clickedYear) => {
     const filterSpacexDataBasedOnYear = (clickedYear) => {
 
         if (clickedYear === selectedYear) {
