@@ -13,6 +13,10 @@ const SpaceX = (props) => {
 
     const { isError, data: spaceXData, yearsList } = props.spacex;
 
+    const [didMount, setDidMount] = useState(false);
+
+    const [isLoading, setIsLoading] = useState(false);
+
     const [selectedYear, setSelectedYear] = useState(null);
 
     const [launchStatus, setLaunchStatus] = useState(null);
@@ -25,6 +29,7 @@ const SpaceX = (props) => {
 
     const [activeLandingStatusId, setActiveLandingStatusId] = useState(null);
 
+
     useEffect(() => {
 
         props.fetchAllSpaceXData();
@@ -33,6 +38,7 @@ const SpaceX = (props) => {
 
     useEffect(() => {
 
+        setIsLoading(true);
 
         let queryStringObj = {};
 
@@ -69,11 +75,20 @@ const SpaceX = (props) => {
 
     }, [selectedYear, launchStatus, landingStatus]);
 
+    useEffect(() => {
+
+        if (!didMount) {
+
+            setDidMount(true)
+        } else {
+
+            setIsLoading(false);
+        }
+    });
+
     const launchStatusRef = [1, 0];
 
     const landingStatusRef = [1, 0];
-
-
 
     const filterSpacexDataBasedOnYear = (selectdId, clickedYear) => {
 
@@ -122,31 +137,6 @@ const SpaceX = (props) => {
     return (
 
         < Fragment >
-            {
-
-                console.log('props: ', props)
-            }
-            {
-
-                console.log('My data: ', isError, spaceXData, yearsList)
-            }
-            {
-
-                console.log('My yearsList: ', yearsList)
-            }
-            {
-
-                console.log('selectedYear: ', selectedYear)
-            }
-            {
-
-                console.log('launchStatus: ', launchStatus)
-            }
-            {
-
-                console.log('landingStatus: ', landingStatus)
-            }
-
             <div className='app__header'>
                 SpaceX Launch Programs
             </div>
@@ -229,7 +219,8 @@ const SpaceX = (props) => {
                         </div>
                         <div className='content'>
                             {
-                                spaceXData.length > 0
+                                isLoading === false
+                                && spaceXData.length > 0
                                 && Array.isArray(spaceXData)
                                 && spaceXData.map(
                                     (
@@ -289,7 +280,6 @@ const SpaceX = (props) => {
                                                     <div>
                                                         {
                                                             land_success == null ? '--' : `${land_success}`
-
                                                         }
                                                     </div>
                                                 </div>
@@ -298,10 +288,18 @@ const SpaceX = (props) => {
                                         ))
                             }
                             {
-                                spaceXData.length === 0
+                                isLoading === false
+                                && spaceXData.length === 0
                                 && (
                                     <div className='empty_container'>
                                         No Record found
+                                    </div>
+                                )
+                            }
+                            {
+                                isLoading === true && (
+                                    <div className='empty_container'>
+                                        ...Loading
                                     </div>
                                 )
                             }
