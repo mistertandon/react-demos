@@ -4,18 +4,17 @@ import './spacex.css';
 import { connect } from 'react-redux';
 import {
     getAllSpaceXData,
-    getFilteredSpaceXData
+    getFilteredSpaceXData,
+    runLoader
 } from './../redux/actions/spacex.action';
 
 import logo from './../spacex_desk.png';
 
 const SpaceX = (props) => {
 
-    const { isError, data: spaceXData, yearsList } = props.spacex;
+    const { isError, data: spaceXData, yearsList, isLoading } = props.spacex;
 
-    const [didMount, setDidMount] = useState(false);
-
-    const [isLoading, setIsLoading] = useState(false);
+    const { fetchAllSpaceXData, fetchFilteredSpaceXData, runLoaderDispatch } = props;
 
     const [selectedYear, setSelectedYear] = useState(null);
 
@@ -29,16 +28,17 @@ const SpaceX = (props) => {
 
     const [activeLandingStatusId, setActiveLandingStatusId] = useState(null);
 
-
     useEffect(() => {
 
-        props.fetchAllSpaceXData();
+        runLoaderDispatch(true);
+        fetchAllSpaceXData();
+        runLoaderDispatch(false);
 
     }, []);
 
     useEffect(() => {
 
-        setIsLoading(true);
+        runLoaderDispatch(true);
 
         let queryStringObj = {};
 
@@ -67,24 +67,15 @@ const SpaceX = (props) => {
 
             let url = `https://api.spaceXdata.com/v3/launches?limit=100${queryString}`;
 
-            props.fetchFilteredSpaceXData(url);
+            fetchFilteredSpaceXData(url);
         } else {
 
-            props.fetchAllSpaceXData();
+            fetchAllSpaceXData();
         }
+
+        runLoaderDispatch(false);
 
     }, [selectedYear, launchStatus, landingStatus]);
-
-    useEffect(() => {
-
-        if (!didMount) {
-
-            setDidMount(true)
-        } else {
-
-            setIsLoading(false);
-        }
-    });
 
     const launchStatusRef = [1, 0];
 
@@ -150,7 +141,8 @@ const SpaceX = (props) => {
                                     </div>
                                 <div className='launch_years'>
                                     {
-                                        yearsList.length > 0
+                                        isLoading === false
+                                        && yearsList.length > 0
                                         && Array.isArray(yearsList)
                                         && yearsList.map((year, idx) => (
 
@@ -165,6 +157,12 @@ const SpaceX = (props) => {
                                                 }
                                             </button>
                                         ))
+                                    }
+                                    {
+                                        yearsList.length === 0
+                                        && (
+                                            <div> No data exist</div>
+                                        )
                                     }
                                 </div>
                             </div>
@@ -326,7 +324,8 @@ const mapDispatchToProps = (dispatch) => {
     return {
 
         fetchAllSpaceXData: () => dispatch(getAllSpaceXData()),
-        fetchFilteredSpaceXData: (queryString) => dispatch(getFilteredSpaceXData(queryString))
+        fetchFilteredSpaceXData: (queryString) => dispatch(getFilteredSpaceXData(queryString)),
+        runLoaderDispatch: (status) => dispatch(runLoader(status))
     }
 }
 

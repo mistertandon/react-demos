@@ -5,7 +5,7 @@ import {
     GET_FILTERED_SPACEX_DATA,
     FILTERED_SPACEX_DATA_STATUS_ERROR,
     FILTERED_SPACEX_DATA_STATUS_SUCCESS,
-    // SET_YEARS_LIST
+    RUN_LOADER
 } from './spacex.constant';
 
 export const getAllSpaceXData = () => {
@@ -56,5 +56,13 @@ export const filteredSpaceXDataStatusError = (error) => {
     return {
         type: FILTERED_SPACEX_DATA_STATUS_ERROR,
         error
+    }
+}
+
+export const runLoader = (status) => {
+
+    return {
+        type: RUN_LOADER,
+        status
     }
 }

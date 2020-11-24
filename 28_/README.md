@@ -8,6 +8,12 @@
  - cd spacex
  - npm run
 
+ > Third party packages used
+  - Redux
+  - Redux-Saga
+  - Axios
+  - React router dom (Just to demonstrate lazy importing)
+
  > Implemented things
  - Lazy import
  - Use custom hooks (useState and stateEffect)
