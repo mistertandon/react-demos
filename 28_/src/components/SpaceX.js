@@ -10,6 +10,8 @@ import {
 
 import logo from './../spacex_desk.png';
 
+import DisplayHeading from './DisplayHeading';
+
 const SpaceX = (props) => {
 
     const { isError, data: spaceXData, yearsList, isLoading } = props.spacex;
@@ -128,17 +130,20 @@ const SpaceX = (props) => {
     return (
 
         < Fragment >
-            <div className='app__header'>
+            <DisplayHeading classNameRef='app__header' data='SpaceX Launch Programs' />
+            {/* <div className='app__header'>
                 SpaceX Launch Programs
-            </div>
+            </div> */}
             <div className='container'>
                 {
                     <Fragment>
                         <div className='sidebar'>
                             <div className='launch_year__container'>
-                                <div className='launch_year__header'>
+
+                                <DisplayHeading classNameRef='launch_year__header' data='Launch year' />
+                                {/* <div className='launch_year__header'>
                                     Launch year
-                                </div>
+                                </div> */}
                                 <div className='launch_years'>
                                     {
                                         isLoading === false
@@ -159,17 +164,20 @@ const SpaceX = (props) => {
                                         ))
                                     }
                                     {
-                                        yearsList.length === 0
+                                        isLoading === false
+                                        && yearsList.length === 0
                                         && (
-                                            <div> No Record found </div>
+                                            <DisplayHeading classNameRef='' data='No Record found' />
+                                            // <div> No Record found </div>
                                         )
                                     }
                                 </div>
                             </div>
                             <div className='launch_status__container'>
-                                <div className='launch_status__header'>
+                                <DisplayHeading classNameRef='launch_status__header' data='Successful Launch' />
+                                {/* <div className='launch_status__header'>
                                     Successful Launch
-                                    </div>
+                                    </div> */}
                                 <div className='launch_status'>
                                     {
                                         launchStatusRef.map((status, idx) => (
@@ -191,9 +199,10 @@ const SpaceX = (props) => {
                                 </div>
                             </div>
                             <div className='landing_status__container'>
-                                <div className='landing_status__header'>
+                                <DisplayHeading classNameRef='landing_status__header' data='Successful Landing' />
+                                {/* <div className='landing_status__header'>
                                     Successful Landing
-                                    </div>
+                                    </div> */}
                                 <div className='landing_status'>
                                     {
                                         landingStatusRef.map((status, idx) => (
@@ -237,14 +246,21 @@ const SpaceX = (props) => {
                                                 </div>
 
                                                 <div className='spacex_info__containter'>
-                                                    <div>
+                                                    <DisplayHeading
+                                                        classNameRef=''
+                                                        data={
+                                                            `${mission_name} #${flight_number}`
+                                                        } />
+                                                    {/* <div>
                                                         {
                                                             `${mission_name} #${flight_number}`
                                                         }
-                                                    </div>
-                                                    <div>
+                                                    </div> */}
+
+                                                    <DisplayHeading classNameRef='' data='Mission id' />
+                                                    {/* <div>
                                                         Mission id
-                                                    </div>
+                                                    </div> */}
                                                     <div>
                                                         {
                                                             mission_id.length > 0
@@ -256,30 +272,42 @@ const SpaceX = (props) => {
                                                             mission_id.length === 0 && '--'
                                                         }
                                                     </div>
-                                                    <div>
+                                                    <DisplayHeading classNameRef='' data='Launch year' />
+                                                    {/* <div>
                                                         Launch year
-                                                    </div>
-                                                    <div>
+                                                    </div> */}
+
+                                                    <DisplayHeading classNameRef='' data={launch_year} />
+                                                    {/* <div>
                                                         {
                                                             launch_year
                                                         }
-                                                    </div>
-                                                    <div>
+                                                    </div> */}
+                                                    <DisplayHeading classNameRef='' data='Successful Launch' />
+                                                    {/* <div>
                                                         Successful Launch
-                                                    </div>
-                                                    <div>
+                                                    </div> */}
+                                                    <DisplayHeading classNameRef=''
+                                                        data={
+                                                            `${launch_success}`
+                                                        } />
+                                                    {/* <div>
                                                         {
                                                             `${launch_success}`
                                                         }
-                                                    </div>
-                                                    <div>
+                                                    </div> */}
+                                                    <DisplayHeading classNameRef='' data='Successful Landing' />
+                                                    {/* <div>
                                                         Successful Landing
-                                                    </div>
-                                                    <div>
+                                                    </div> */}
+                                                    <DisplayHeading classNameRef=''
+                                                        data={land_success == null ? '--' : `${land_success}`}
+                                                    />
+                                                    {/* <div>
                                                         {
                                                             land_success == null ? '--' : `${land_success}`
                                                         }
-                                                    </div>
+                                                    </div> */}
                                                 </div>
 
                                             </div>
@@ -289,16 +317,19 @@ const SpaceX = (props) => {
                                 isLoading === false
                                 && spaceXData.length === 0
                                 && (
-                                    <div className='empty_container'>
-                                        No Record found
-                                    </div>
+                                    <DisplayHeading classNameRef='empty_container' data='No Record found' />
+
+                                    // <div className='empty_container'>
+                                    //     No Record found
+                                    // </div>
                                 )
                             }
                             {
                                 isLoading === true && (
-                                    <div className='empty_container'>
-                                        ...Loading
-                                    </div>
+                                    <DisplayHeading classNameRef='empty_container' data='...Loading' />
+                                    // <div className='empty_container'>
+                                    //     ...Loading
+                                    // </div>
                                 )
                             }
                         </div>
@@ -306,9 +337,10 @@ const SpaceX = (props) => {
                 }
 
             </div>
-            <div className='app__footer'>
+            <DisplayHeading classNameRef='app__footer' data='Developed by : Parvesh' />
+            {/* <div className='app__footer'>
                 Developed by : Parvesh
-            </div>
+            </div> */}
         </Fragment >
     );
 
