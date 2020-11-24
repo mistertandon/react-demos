@@ -26,6 +26,13 @@
  - Desktop view contains two columns layout ( Four tiles shows on second column)
 
  > Scope of improvement
-  - Loader implmentation
-  - Breakdown developed code into mini-component to make code more manageble and reuseable.
+  - Breakdown developed code furthe into mini-component to make code more manageble and reuseable.
+
+> Note: 
+```
+"links": {
+        "mission_patch": "https://images2.imgbox.com/40/e3/GypSkayF_o.png",
+}
+```
+ - https://images2.imgbox.com was down, therefore I used dummy image.
 

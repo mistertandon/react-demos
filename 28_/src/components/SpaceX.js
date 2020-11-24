@@ -291,41 +291,49 @@ const SpaceX = (props) => {
         < Fragment >
 
             <DisplayHeading classNameRef='app__header' data='SpaceX Launch Programs' />
-
-            <div className='container'>
-                {
-                    <Fragment>
-                        <div className='sidebar'>
-                            <div className='launch_year__container'>
-
-                                <DisplayHeading classNameRef='launch_year__header' data='Launch year' />
-                                {
-                                    renderYearFilterBlock()
-                                }
-
-                            </div>
-                            <div className='launch_status__container'>
-
-                                <DisplayHeading classNameRef='launch_status__header' data='Successful Launch' />
-                                {
-                                    renderLaunchStatusFilterBlock()
-                                }
-                            </div>
-                            <div className='landing_status__container'>
-
-                                <DisplayHeading classNameRef='landing_status__header' data='Successful Landing' />
-                                {
-                                    renderLandingStatusFilterBlock()
-                                }
-                            </div>
-                        </div>
+            {
+                isError === false
+                && (
+                    <div className='container'>
                         {
-                            renderSpaceXData()
-                        }
-                    </Fragment>
-                }
+                            <Fragment>
+                                <div className='sidebar'>
+                                    <div className='launch_year__container'>
 
-            </div>
+                                        <DisplayHeading classNameRef='launch_year__header' data='Launch year' />
+                                        {
+                                            renderYearFilterBlock()
+                                        }
+
+                                    </div>
+                                    <div className='launch_status__container'>
+
+                                        <DisplayHeading classNameRef='launch_status__header' data='Successful Launch' />
+                                        {
+                                            renderLaunchStatusFilterBlock()
+                                        }
+                                    </div>
+                                    <div className='landing_status__container'>
+
+                                        <DisplayHeading classNameRef='landing_status__header' data='Successful Landing' />
+                                        {
+                                            renderLandingStatusFilterBlock()
+                                        }
+                                    </div>
+                                </div>
+                                {
+                                    renderSpaceXData()
+                                }
+                            </Fragment>
+                        }
+
+                    </div>
+                )
+            }
+            {
+                isError === true
+                && <DisplayHeading classNameRef='app__footer' data='Something went wrong please try after some time' />
+            }
 
             <DisplayHeading classNameRef='app__footer' data='Developed by : Parvesh' />
 
