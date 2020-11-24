@@ -1,6 +1,14 @@
 * {
     box-sizing   : border-box;
-    /* border    : 1px solid black; */
+}
+
+.app__header {
+    height     : 50px;
+    line-height: 50px;
+    padding-left: 10px;
+    font-weight: bold;
+    font-size  : x-large;
+    background-color: #EDEDED;
 }
 
 .active {
@@ -14,9 +22,7 @@
     border-radius   : 5px;
 }
 
-
-
-@media only screen and (min-device-width : 737px) {
+/* @media only screen and (min-device-width : 737px) {
 
     .container {
         display         : flex;
@@ -32,7 +38,7 @@
         flex-wrap      : wrap;
         justify-content: flex-start;
     }
-}
+} */
 
 .empty_container {
     width      : 100%;
@@ -44,6 +50,10 @@
     flex          : 1.5;
     display       : flex;
     flex-direction: column;
+    background-color: #ffffff;
+    border-radius: 8px;
+    margin-left: 10px;
+    margin-top: 10px;    
 }
 
 .launch_year__container {
@@ -95,12 +105,19 @@
     height    : 30px;
 }
 
+.container {
+    display         : flex;
+    flex-direction  : row;
+    width           : 100%;
+    background-color: #EDEDED;
+}
+
 .content {
     flex           : 8.5;
     display        : flex;
     flex-direction : row;
     flex-wrap      : wrap;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .spacex__tile {
@@ -169,7 +186,7 @@
 
     .container {
         display         : flex;
-        flex-direction  : column;
+        flex-direction  : row;
         width           : 100%;
         background-color: #EDEDED;
     }
@@ -241,4 +258,13 @@
 .spacex_info__containter>div:nth-child(9),
 .landing_status__text {
     text-transform: capitalize;
+}
+
+.app__footer{
+    text-align: center;
+    height     : 50px;
+    line-height: 50px;
+    font-weight: bold;
+    font-size  : large;
+    background-color: #EDEDED;    
 }

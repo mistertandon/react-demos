@@ -308,6 +308,9 @@ const SpaceX = (props) => {
                 }
 
             </div>
+            <div className='app__footer'>
+                Developed by : Parvesh
+            </div>
         </Fragment >
     );
 
