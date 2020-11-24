@@ -138,7 +138,7 @@ const SpaceX = (props) => {
                             <div className='launch_year__container'>
                                 <div className='launch_year__header'>
                                     Launch year
-                                    </div>
+                                </div>
                                 <div className='launch_years'>
                                     {
                                         isLoading === false
@@ -161,7 +161,7 @@ const SpaceX = (props) => {
                                     {
                                         yearsList.length === 0
                                         && (
-                                            <div> No data exist</div>
+                                            <div> No Record found </div>
                                         )
                                     }
                                 </div>
@@ -258,7 +258,7 @@ const SpaceX = (props) => {
                                                     </div>
                                                     <div>
                                                         Launch year
-                                                        </div>
+                                                    </div>
                                                     <div>
                                                         {
                                                             launch_year
@@ -266,7 +266,7 @@ const SpaceX = (props) => {
                                                     </div>
                                                     <div>
                                                         Successful Launch
-                                                        </div>
+                                                    </div>
                                                     <div>
                                                         {
                                                             `${launch_success}`
