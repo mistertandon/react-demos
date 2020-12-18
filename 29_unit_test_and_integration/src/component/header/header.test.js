@@ -11,5 +11,5 @@ describe('Header Component', () => {
         const wrapper = component.find(`[data-test='header-component-container']`);
 
         expect(wrapper.length).toBe(1);
-    })
-})
+    });
+});
