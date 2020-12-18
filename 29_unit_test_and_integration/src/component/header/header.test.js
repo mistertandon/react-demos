@@ -21,7 +21,6 @@ describe('Header Component', () => {
 
     it('Should render without any error', () => {
 
-        // const component = shallow(<Header />);
         const wrapper = component.find(`[data-test='header-component-container']`);
 
         expect(wrapper.length).toBe(1);
@@ -29,7 +28,6 @@ describe('Header Component', () => {
 
     it('Should render header', () => {
 
-        // const component = shallow(<Header />);
         const wrapper = component.find(`[data-test='header-container']`);
 
         expect(wrapper.length).toBe(1);
@@ -37,7 +35,6 @@ describe('Header Component', () => {
 
     it('Should render without any error', () => {
 
-        // const component = shallow(<Header />);
         const wrapper = component.find(`[data-test='header-logo']`);
 
         expect(wrapper.length).toBe(1);
