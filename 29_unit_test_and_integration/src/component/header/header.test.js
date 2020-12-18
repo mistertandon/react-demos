@@ -10,6 +10,13 @@ const setUp = (props = {}) => {
     return component
 }
 
+const findByTestAttr = (component, attr) => {
+
+    const wrapper = component.find(`[data-test='${attr}']`);
+
+    return wrapper
+}
+
 describe('Header Component', () => {
 
     let component;
@@ -21,22 +28,22 @@ describe('Header Component', () => {
 
     it('Should render without any error', () => {
 
-        const wrapper = component.find(`[data-test='header-component-container']`);
+        const headerComponentContainer = findByTestAttr(component, 'header-component-container');
 
-        expect(wrapper.length).toBe(1);
+        expect(headerComponentContainer.length).toBe(1);
     });
 
     it('Should render header', () => {
 
-        const wrapper = component.find(`[data-test='header-container']`);
+        const headerContainer = findByTestAttr(component, 'header-container');
 
-        expect(wrapper.length).toBe(1);
+        expect(headerContainer.length).toBe(1);
     });
 
     it('Should render without any error', () => {
 
-        const wrapper = component.find(`[data-test='header-logo']`);
-
-        expect(wrapper.length).toBe(1);
+        const logo = findByTestAttr(component, 'header-logo');
+        
+        expect(logo.length).toBe(1);
     });
 });
