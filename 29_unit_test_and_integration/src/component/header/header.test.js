@@ -12,4 +12,20 @@ describe('Header Component', () => {
 
         expect(wrapper.length).toBe(1);
     });
+
+    it('Should render header', () => {
+
+        const component = shallow(<Header />);
+        const wrapper = component.find(`[data-test='header-container']`);
+
+        expect(wrapper.length).toBe(1);
+    });
+
+    it('Should render without any error', () => {
+
+        const component = shallow(<Header />);
+        const wrapper = component.find(`[data-test='header-logo']`);
+
+        expect(wrapper.length).toBe(1);
+    });
 });
