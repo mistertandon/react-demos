@@ -7,9 +7,9 @@ const Header = () => {
 
     return (
 
-        <header data-test='header-component-container'>
-            <div className='header-container' data-test='header-container'>
-                <img className='header-logo' data-test='header-logo' src={logo} alt='Image does not find.' />
+        <header data-test='header-container'>
+            <div className='header-container' data-test='header'>
+                <img className='header-logo' data-test='logo' src={logo} alt='Image does not find.' />
             </div>
         </header>
 
